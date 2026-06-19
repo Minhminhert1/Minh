@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Ngày T: Giao dịch phát sinh</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f7fa;
+  padding: 36px 20px 60px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 30px;
+}
+
+/* ── outer grid: timeline | col1 | col2 ── */
+.diagram {
+  max-width: 820px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 64px 1fr 1fr;
+  grid-template-rows: auto; /* rows defined by zones */
+}
+
+/* ── zone rows ── */
+/* Each zone = one row in the grid */
+/* We'll manually place each cell */
+
+/* Timeline cell */
+.tl {
+  grid-column: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-right: 10px;
+  padding-top: 10px;
+  position: relative;
+}
+.tl-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #888;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+  background: #f5f7fa;
+  padding: 1px 3px;
+}
+
+/* Vertical timeline line */
+.tl::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: -1px;
+  right: 4px;
+  width: 1.5px;
+  background: #ccc;
+  z-index: 1;
+}
+
+/* content cells */
+.cell {
+  padding: 14px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+/* horizontal divider */
+.divider {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 64px 1fr 1fr;
+  position: relative;
+}
+.divider .tl-div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  position: relative;
+}
+.divider .tl-div::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  right: 4px;
+  width: 1.5px;
+  background: #ccc;
+}
+.divider-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #555;
+  background: #e8eaf0;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+}
+.divider-line {
+  grid-column: 2 / -1;
+  height: 1px;
+  background: #b0b8c9;
+  align-self: center;
+  position: relative;
+}
+.divider-line::before {
+  content: '';
+  position: absolute;
+  left: -6px; top: -4px;
+  border: 5px solid transparent;
+  border-left: 6px solid #b0b8c9;
+}
+
+/* ── Box styles ── */
+.box {
+  border-radius: 9px;
+  padding: 8px 14px;
+  font-size: 0.81rem;
+  text-align: center;
+  line-height: 1.45;
+  width: 100%;
+  max-width: 280px;
+}
+.box b { display: block; font-size: 0.85rem; font-weight: 700; }
+.box small { display: block; font-size: 0.72rem; opacity: 0.72; margin-top: 2px; }
+
+.box-start  { background: #dbeafe; border: 1.5px solid #60a5fa; color: #1e3a5f; }
+.box-blue   { background: #dbeafe; border: 1.5px solid #3b82f6; color: #1e3a5f; }
+.box-red    { background: #fee2e2; border: 1.5px solid #f87171; color: #7f1d1d; }
+.box-warn   { background: #fef9c3; border: 1.5px solid #facc15; color: #713f12; }
+.box-green  { background: #dcfce7; border: 1.5px solid #4ade80; color: #14532d; }
+.box-purple { background: #ede9fe; border: 1.5px solid #a78bfa; color: #3b0764; }
+.box-done   { background: #bbf7d0; border: 2px solid #16a34a; color: #14532d; font-weight: 700; font-size: 0.88rem; }
+.box-fail   { background: #fecaca; border: 2px solid #dc2626; color: #7f1d1d; font-weight: 700; font-size: 0.88rem; }
+
+/* diamond */
+.diamond-wrap {
+  grid-column: 2 / -1;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 4px;
+}
+.diamond {
+  background: #fef9c3;
+  border: 2px solid #facc15;
+  color: #713f12;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 8px 20px;
+  border-radius: 6px;
+  text-align: center;
+  position: relative;
+  transform: skewX(-2deg);
+}
+
+/* shared start rows */
+.shared {
+  grid-column: 2 / -1;
+  display: flex;
+  justify-content: center;
+  padding: 6px 0 2px;
+}
+
+/* arrow */
+.arr { font-size: 1.05rem; color: #94a3b8; line-height: 1; margin: 0; }
+.arr-r { color: #f87171; }
+.arr-g { color: #4ade80; }
+
+/* column headers */
+.col-hdr {
+  text-align: center;
+  border-radius: 9px;
+  padding: 6px 10px;
+  font-weight: 700;
+  font-size: 0.83rem;
+  margin-bottom: 4px;
+}
+.hdr-r { background: #fee2e2; color: #b91c1c; border: 1.5px solid #fca5a5; }
+.hdr-g { background: #dcfce7; color: #15803d; border: 1.5px solid #86efac; }
+
+/* branch label under diamond */
+.br-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 0 4px;
+  text-align: center;
+}
+
+/* empty placeholder */
+.empty { visibility: hidden; }
+
+/* col header row */
+.hdr-row {
+  grid-column: 2 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding: 0 10px 8px;
+}
+
+/* inner 2-col for content cells */
+.two-col {
+  grid-column: 2 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding: 0 10px;
+}
+.col-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+/* legend */
+.legend {
+  max-width: 820px;
+  margin: 24px auto 0;
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  font-size: 0.76rem;
+  color: #555;
+  flex-wrap: wrap;
+}
+.leg {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.leg-line { width: 28px; height: 3px; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<h2>Ngày T: Giao dịch phát sinh</h2>
+
+<div class="diagram">
+
+  <!-- ══════════════ ZONE: Ngày T (trước 19h) ══════════════ -->
+  <!-- TL label -->
+  <div class="tl" style="grid-row:1; grid-column:1;">
+    <span class="tl-label">Ngày T</span>
+  </div>
+
+  <!-- Col headers -->
+  <div class="hdr-row" style="grid-row:1; padding-top:10px;">
+    <div class="col-hdr hdr-r">TH1 — 19h → 22h</div>
+    <div class="col-hdr hdr-g">TH2 — Sau 22h</div>
+  </div>
+
+  <!-- shared start -->
+  <div class="tl" style="grid-row:2;"></div>
+  <div class="shared" style="grid-row:2;">
+    <div class="box box-start" style="max-width:320px;">
+      <b>TGH hạch toán thành công</b>
+    </div>
+  </div>
+
+  <!-- arrow down to diamond -->
+  <div class="tl" style="grid-row:3;"></div>
+  <div class="shared" style="grid-row:3; padding:2px 0;">
+    <span class="arr">↓</span>
+  </div>
+
+  <!-- diamond -->
+  <div class="tl" style="grid-row:4;"></div>
+  <div class="diamond-wrap" style="grid-row:4;">
+    <div class="diamond">Mấy giờ?</div>
+  </div>
+
+  <!-- branch labels -->
+  <div class="tl" style="grid-row:5;"></div>
+  <div class="two-col" style="grid-row:5;">
+    <div class="col-cell"><span class="br-label" style="color:#b91c1c;">← 19 – 20h</span></div>
+    <div class="col-cell"><span class="br-label" style="color:#15803d;">Sau 22h →</span></div>
+  </div>
+
+  <!-- TH1: TGH ghi nhận value date T | TH2: (chưa xảy ra) -->
+  <div class="tl" style="grid-row:6;"></div>
+  <div class="two-col" style="grid-row:6; padding-top:4px;">
+    <div class="col-cell">
+      <div class="box box-blue">
+        <b>TGH ghi nhận</b>
+        <small>value date = ngày T</small>
+      </div>
+    </div>
+    <div class="col-cell">
+      <div class="box box-warn" style="opacity:0.45;">
+        <b>Chưa phát sinh</b>
+        <small>GD chưa lên T24</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- arrows -->
+  <div class="tl" style="grid-row:7;"></div>
+  <div class="two-col" style="grid-row:7;">
+    <div class="col-cell"><span class="arr arr-r">↓</span></div>
+    <div class="col-cell"></div>
+  </div>
+
+  <!-- TH1: Kondor đã đóng -->
+  <div class="tl" style="grid-row:8;"></div>
+  <div class="two-col" style="grid-row:8;">
+    <div class="col-cell">
+      <div class="box box-warn">
+        <b>Kondor: đã đóng ghi nhận</b>
+        <small>Đã đóng cửa sau 19h</small>
+      </div>
+    </div>
+    <div class="col-cell"></div>
+  </div>
+
+  <!-- arrows -->
+  <div class="tl" style="grid-row:9;"></div>
+  <div class="two-col" style="grid-row:9;">
+    <div class="col-cell"><span class="arr arr-r">↓</span></div>
+    <div class="col-cell"></div>
+  </div>
+
+  <!-- TH1: Không map -->
+  <div class="tl" style="grid-row:10;"></div>
+  <div class="two-col" style="grid-row:10;">
+    <div class="col-cell">
+      <div class="box box-red">
+        <b>Không map được</b>
+        <small>Chỉ tồn tại trên T24</small>
+      </div>
+    </div>
+    <div class="col-cell"></div>
+  </div>
+
+  <!-- ══════════════ DIVIDER 22:00 ══════════════ -->
+  <div class="divider" style="grid-row:11; grid-column:1/-1; margin: 10px 0 6px;">
+    <div class="tl-div">
+      <span class="divider-label">22:00</span>
+    </div>
+    <div class="divider-line" style="grid-column:2/-1;"></div>
+  </div>
+
+  <!-- TH1: TGH quét đóng | TH2: TGH hạch toán thành công -->
+  <div class="tl" style="grid-row:12;"></div>
+  <div class="two-col" style="grid-row:12; padding-top:6px;">
+    <div class="col-cell">
+      <div class="box box-red">
+        <b>TGH quét đóng trạng thái</b>
+        <small>T24 quét tự động lúc 22h</small>
+      </div>
+    </div>
+    <div class="col-cell">
+      <div class="box box-blue">
+        <b>TGH hạch toán thành công</b>
+        <small>Sau 22h → value date = T+1</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl" style="grid-row:13;"></div>
+  <div class="two-col" style="grid-row:13;">
+    <div class="col-cell"><span class="arr arr-r">↓</span></div>
+    <div class="col-cell"><span class="arr arr-g">↓</span></div>
+  </div>
+
+  <!-- TH1: KO thấy GD đối ứng | TH2: TGH ghi nhận value T+1 -->
+  <div class="tl" style="grid-row:14;"></div>
+  <div class="two-col" style="grid-row:14;">
+    <div class="col-cell">
+      <div class="box box-red">
+        <b>KO thấy GD đối ứng T K+</b>
+        <small>Không có Kondor match</small>
+      </div>
+    </div>
+    <div class="col-cell">
+      <div class="box box-blue">
+        <b>TGH ghi nhận</b>
+        <small>value date = T+1</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl" style="grid-row:15;"></div>
+  <div class="two-col" style="grid-row:15;">
+    <div class="col-cell"><span class="arr arr-r">↓</span></div>
+    <div class="col-cell"><span class="arr arr-g">↓</span></div>
+  </div>
+
+  <!-- TH1: Đóng trạng thái | TH2: Ko biết đóng trạng thái -->
+  <div class="tl" style="grid-row:16;"></div>
+  <div class="two-col" style="grid-row:16;">
+    <div class="col-cell">
+      <div class="box box-fail">
+        ⚠ Đóng trạng thái (ngày T)
+      </div>
+    </div>
+    <div class="col-cell">
+      <div class="box box-warn">
+        <b>Ko biết đóng trạng thái</b>
+        <small>TGH đã quét xong lúc 22h</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ DIVIDER T+1 ══════════════ -->
+  <div class="divider" style="grid-row:17; grid-column:1/-1; margin: 10px 0 6px;">
+    <div class="tl-div">
+      <span class="divider-label">T+1</span>
+    </div>
+    <div class="divider-line" style="grid-column:2/-1;"></div>
+  </div>
+
+  <!-- TH2: Kondor hạch toán ED -->
+  <div class="tl" style="grid-row:18;"></div>
+  <div class="two-col" style="grid-row:18; padding-top:6px;">
+    <div class="col-cell"></div>
+    <div class="col-cell">
+      <span class="arr arr-g">↓</span>
+      <div class="box box-purple">
+        <b>Kondor hạch toán ED</b>
+        <small>Value date = T+1</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl" style="grid-row:19;"></div>
+  <div class="two-col" style="grid-row:19;">
+    <div class="col-cell"></div>
+    <div class="col-cell"><span class="arr arr-g">↓</span></div>
+  </div>
+
+  <!-- TH2: Map -->
+  <div class="tl" style="grid-row:20;"></div>
+  <div class="two-col" style="grid-row:20;">
+    <div class="col-cell"></div>
+    <div class="col-cell">
+      <div class="box box-green">
+        <b>Map với GO T TGH</b>
+        <small>Value date khớp T+1</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl" style="grid-row:21;"></div>
+  <div class="two-col" style="grid-row:21;">
+    <div class="col-cell"></div>
+    <div class="col-cell"><span class="arr arr-g">↓</span></div>
+  </div>
+
+  <!-- TH2: Deal done -->
+  <div class="tl" style="grid-row:22;"></div>
+  <div class="two-col" style="grid-row:22;">
+    <div class="col-cell"></div>
+    <div class="col-cell">
+      <div class="box box-done">✓ Deal Done</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="leg">
+    <div class="leg-line" style="background:#f87171;"></div>
+    Luồng thất bại (TH1)
+  </div>
+  <div class="leg">
+    <div class="leg-line" style="background:#4ade80;"></div>
+    Luồng thành công (TH2)
+  </div>
+  <div class="leg">
+    <div class="leg-line" style="background:#b0b8c9; height:1px;"></div>
+    Mốc thời gian
+  </div>
+</div>
+
+</body>
+</html>
