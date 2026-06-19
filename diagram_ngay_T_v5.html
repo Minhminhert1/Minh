@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Hạch toán T24 — Ngày T</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: #0f172a;
+  padding: 40px 24px 64px;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin-bottom: 32px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.master {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+}
+
+/* ── Timeline strip ── */
+.tl-strip {
+  width: 100px;
+  flex-shrink: 0;
+  position: relative;
+  padding-top: 12px;
+}
+.tl-strip::after {
+  content: '';
+  position: absolute;
+  top: 16px; bottom: 0; right: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, #334155, #475569 40%, #334155);
+}
+.tl-mark {
+  position: relative;
+  z-index: 2;
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-align: right;
+  padding-right: 20px;
+  line-height: 1.4;
+  background: #0f172a;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* ── Content area ── */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Horizontal divider ── */
+.h-divider {
+  display: flex;
+  align-items: center;
+  margin: 12px 0 8px;
+  gap: 0;
+}
+.h-divider-label {
+  font-size: 0.63rem;
+  font-weight: 800;
+  color: #0f172a;
+  background: #64748b;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  margin-right: 10px;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.h-divider-line {
+  flex: 1;
+  height: 1px;
+  background: #334155;
+  border-top: 1px dashed #475569;
+}
+
+/* ── Grid layouts ── */
+.cols3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 18px;
+  align-items: start;
+}
+
+.full  { display: flex; justify-content: center; margin-bottom: 4px; }
+.full-wide { display: flex; justify-content: stretch; margin-bottom: 4px; }
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+/* ── Boxes ── */
+.box {
+  border-radius: 6px;
+  padding: 9px 13px;
+  font-size: 0.79rem;
+  text-align: center;
+  line-height: 1.5;
+  width: 100%;
+  position: relative;
+}
+.box b  { display: block; font-size: 0.82rem; font-weight: 700; }
+.box sm { display: block; font-size: 0.7rem; opacity: 0.6; margin-top: 2px; }
+
+/* Dark-mode palette */
+.b-start  {
+  background: #1e293b;
+  border: 1.5px solid #3b82f6;
+  color: #bfdbfe;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.08);
+}
+.b-blue   {
+  background: #172554;
+  border: 1.5px solid #3b82f6;
+  color: #93c5fd;
+}
+.b-warn   {
+  background: #1c1a08;
+  border: 1.5px solid #ca8a04;
+  color: #fde68a;
+}
+.b-red    {
+  background: #1f0a0a;
+  border: 1.5px solid #dc2626;
+  color: #fca5a5;
+}
+.b-red2   {
+  background: #2d0a0a;
+  border: 2px solid #ef4444;
+  color: #fca5a5;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.12);
+}
+.b-green  {
+  background: #052e16;
+  border: 1.5px solid #16a34a;
+  color: #86efac;
+}
+.b-purple {
+  background: #1e1035;
+  border: 1.5px solid #7c3aed;
+  color: #c4b5fd;
+}
+.b-done   {
+  background: #052e16;
+  border: 2px solid #22c55e;
+  color: #4ade80;
+  font-weight: 700;
+  font-size: 0.85rem;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+}
+
+/* shared span box */
+.box-span {
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 0.82rem;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.4;
+  width: 100%;
+  background: #172554;
+  border: 2px solid #2563eb;
+  color: #93c5fd;
+  letter-spacing: 0.2px;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+/* diamond */
+.diamond {
+  background: #1c1a08;
+  border: 2px solid #ca8a04;
+  color: #fde68a;
+  font-weight: 700;
+  font-size: 0.82rem;
+  padding: 8px 20px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  clip-path: polygon(8% 50%, 50% 5%, 92% 50%, 50% 95%);
+  padding: 18px 28px;
+}
+
+/* arrows */
+.arr   { text-align: center; font-size: 1rem; color: #475569; line-height: 1.2; }
+.arr-r { color: #ef4444; }
+.arr-g { color: #22c55e; }
+
+/* branch label */
+.blabel {
+  font-size: 0.67rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* col headers */
+.col-hdr {
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.hdr-r    { background: #2d0a0a; color: #f87171; border: 1.5px solid #ef4444; }
+.hdr-g    { background: #052e16; color: #4ade80; border: 1.5px solid #22c55e; }
+.hdr-gray { background: #1e293b; color: #94a3b8; border: 1.5px solid #475569; }
+
+/* legend */
+.legend {
+  max-width: 920px; margin: 28px auto 0;
+  display: flex; gap: 24px; justify-content: center;
+  font-size: 0.72rem; color: #94a3b8; flex-wrap: wrap;
+}
+.leg { display: flex; align-items: center; gap: 7px; }
+.leg-dot { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<h2>Ngày T — Giao dịch phát sinh (sau cutoff time FXD)</h2>
+
+<div class="master">
+
+  <!-- ── Timeline strip ── -->
+  <div class="tl-strip">
+    <div style="height:12px;"></div>
+    <div class="tl-mark">Ngày T<br>(sau cutoff<br>time FXD)</div>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="content">
+
+    <!-- Col headers -->
+    <div class="cols3" style="margin-bottom:10px;">
+      <div class="col-hdr hdr-r">Trước 22h</div>
+      <div class="col-hdr hdr-g">Sau 22h</div>
+      <div class="col-hdr hdr-gray">Thất bại</div>
+    </div>
+
+    <!-- START -->
+    <div class="full">
+      <div class="box b-start" style="max-width:260px;">
+        <b>Hạch toán T24</b>
+      </div>
+    </div>
+
+    <!-- Branch labels -->
+    <div class="cols3">
+      <div class="col" style="grid-column:1/3; flex-direction:row; justify-content:center; gap:64px; padding:3px 0;">
+        <span style="font-size:0.67rem; color:#22c55e; font-weight:700; text-transform:uppercase; letter-spacing:.3px;">↙ Thành công</span>
+        <span style="font-size:0.67rem; color:#ef4444; font-weight:700; text-transform:uppercase; letter-spacing:.3px;">Thất bại →</span>
+      </div>
+      <div class="col"></div>
+    </div>
+
+    <!-- Diamond + T24 không ghi nhận -->
+    <div class="cols3" style="align-items:center; margin-bottom:6px;">
+      <div class="col" style="grid-column:1/3; flex-direction:row; justify-content:center; gap:80px; align-items:flex-start; padding:0 20px;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+          <div class="diamond">Mấy giờ?</div>
+          <div style="display:flex; gap:44px; margin-top:2px;">
+            <span class="blabel" style="color:#ef4444;">↙ Trước 22h</span>
+            <span class="blabel" style="color:#22c55e;">Sau 22h ↘</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="box b-red2"><b>T24 KHÔNG ghi nhận</b></div>
+      </div>
+    </div>
+
+    <!-- TH1 boxes before 22h | TH2 empty | TH3 arrow down -->
+    <div class="cols3">
+      <div class="col">
+        <span class="arr arr-r">↓</span>
+        <div class="box b-blue">
+          <b>T24 ghi nhận deal</b>
+          <sm>Value date = T</sm>
+        </div>
+        <span class="arr arr-r">↓</span>
+        <div class="box b-warn">
+          <b>Kondor chưa ghi nhận deal</b>
+        </div>
+        <span class="arr arr-r">↓</span>
+      </div>
+      <div class="col">
+        <div style="height:136px;"></div>
+      </div>
+      <div class="col">
+        <span class="arr arr-r">↓</span>
+      </div>
+    </div>
+
+    <!-- DIVIDER 22h -->
+    <div class="h-divider">
+      <div class="h-divider-label">22h ngày T</div>
+      <div class="h-divider-line"></div>
+    </div>
+
+    <!-- Shared: T24 quét đóng trạng thái -->
+    <div class="full-wide" style="margin:6px 0 6px;">
+      <div class="box-span">T24 quét đóng trạng thái</div>
+    </div>
+
+    <!-- After sweep -->
+    <div class="cols3">
+      <div class="col">
+        <span class="arr arr-r">↓</span>
+        <div class="box b-red">
+          <b>Không có deal đối ứng trên Kondor</b>
+        </div>
+        <span class="arr arr-r">↓</span>
+        <div class="box b-red2">Đóng trạng thái deal</div>
+      </div>
+      <div class="col">
+        <span class="arr arr-g">↓</span>
+      </div>
+      <div class="col">
+        <span class="arr" style="color:#64748b;">↓</span>
+      </div>
+    </div>
+
+    <!-- DIVIDER Sau 22h -->
+    <div class="h-divider" style="margin-top:14px;">
+      <div class="h-divider-label">Sau 22h ngày T</div>
+      <div class="h-divider-line"></div>
+    </div>
+
+    <!-- TH2 after 22h -->
+    <div class="cols3" style="padding-top:8px;">
+      <div class="col"></div>
+      <div class="col">
+        <div class="box b-blue">
+          <b>T24 ghi nhận deal</b>
+          <sm>Value date = T+1</sm>
+        </div>
+        <span class="arr arr-g">↓</span>
+        <div class="box b-green">
+          <b>Không bị quét trạng thái</b>
+        </div>
+        <span class="arr arr-g">↓</span>
+      </div>
+      <div class="col">
+        <span class="arr" style="color:#64748b;">↓</span>
+      </div>
+    </div>
+
+    <!-- DIVIDER Ngày T+1 -->
+    <div class="h-divider" style="margin-top:10px;">
+      <div class="h-divider-label">Ngày T+1</div>
+      <div class="h-divider-line"></div>
+    </div>
+
+    <!-- T+1 -->
+    <div class="cols3" style="padding-top:10px;">
+      <div class="col"></div>
+      <div class="col">
+        <div class="box b-purple">
+          <b>Hạch toán Kondor</b>
+          <sm>Value date = T+1</sm>
+        </div>
+        <span class="arr arr-g">↓</span>
+        <div class="box b-green">
+          <b>Map với deal đối ứng trên T24</b>
+        </div>
+        <span class="arr arr-g">↓</span>
+        <div class="box b-done">✓ Deal done</div>
+      </div>
+      <div class="col">
+        <div class="box b-warn">
+          <b>FXD chặn</b>
+          <sm>KHÔNG đẩy vào Kondor</sm>
+        </div>
+        <span class="arr arr-r">↓</span>
+        <div class="box b-red2">Không ghi nhận Deal</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="leg"><div class="leg-dot" style="background:#2d0a0a; border:1.5px solid #ef4444;"></div>Luồng thất bại / lỗi</div>
+  <div class="leg"><div class="leg-dot" style="background:#052e16; border:1.5px solid #22c55e;"></div>Luồng thành công</div>
+  <div class="leg"><div class="leg-dot" style="background:#172554; border:1.5px solid #3b82f6;"></div>Xử lý T24</div>
+  <div class="leg"><div class="leg-dot" style="background:#1e1035; border:1.5px solid #7c3aed;"></div>Xử lý Kondor</div>
+</div>
+
+</body>
+</html>
