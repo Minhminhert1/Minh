@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ngày T: Giao dịch phát sinh</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f8f9fb;
+    padding: 40px 24px 60px;
+    color: #222;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 32px;
+    letter-spacing: 0.3px;
+  }
+
+  .diagram-wrap {
+    display: flex;
+    gap: 0;
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ── Timeline column ── */
+  .timeline {
+    width: 68px;
+    flex-shrink: 0;
+    position: relative;
+    padding-top: 48px;
+  }
+  .timeline::after {
+    content: '';
+    position: absolute;
+    top: 52px; bottom: 0;
+    left: 50%;
+    width: 1.5px;
+    background: #ccc;
+    transform: translateX(-50%);
+  }
+  .tl-label {
+    position: relative;
+    z-index: 1;
+    background: #f8f9fb;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #888;
+    padding: 2px 0;
+    line-height: 1.2;
+    margin-bottom: 0;
+  }
+  .tl-spacer { height: var(--h, 20px); }
+
+  /* ── Columns ── */
+  .cols {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 28px;
+    padding-left: 12px;
+  }
+
+  /* ── Column header ── */
+  .col-header {
+    border-radius: 10px;
+    padding: 7px 14px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.88rem;
+    margin-bottom: 18px;
+  }
+  .col-header.th1 { background: #fde8e8; color: #c0392b; border: 1.5px solid #f5b7b1; }
+  .col-header.th2 { background: #e8f5e9; color: #27ae60; border: 1.5px solid #a9dfbf; }
+
+  /* ── Flow boxes ── */
+  .box {
+    border-radius: 10px;
+    padding: 9px 14px;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    text-align: center;
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .box strong { display: block; font-size: 0.88rem; font-weight: 700; }
+  .box span   { display: block; font-size: 0.76rem; opacity: 0.75; margin-top: 2px; }
+
+  /* colour variants */
+  .box.start  { background: #eaf4fb; border: 1.5px solid #85c1e9; color: #1a5276; }
+  .box.blue   { background: #d6eaf8; border: 1.5px solid #5dade2; color: #1a5276; }
+  .box.red    { background: #fdecea; border: 1.5px solid #e57373; color: #922b21; }
+  .box.red-dark { background: #f5b7b1; border: 1.5px solid #c0392b; color: #7b241c; font-weight: 700; }
+  .box.warn   { background: #fef9e7; border: 1.5px solid #f4d03f; color: #7d6608; }
+  .box.green  { background: #d5f5e3; border: 1.5px solid #58d68d; color: #1e8449; }
+  .box.purple { background: #ede7f6; border: 1.5px solid #9c89c4; color: #4a235a; }
+  .box.done   { background: #d5f5e3; border: 2px solid #27ae60; color: #1a5c32; font-weight: 700; }
+  .box.fail   { background: #fdecea; border: 2px solid #c0392b; color: #7b241c; font-weight: 700; }
+
+  /* diamond */
+  .diamond-wrap {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin: 4px 0 10px;
+  }
+  .diamond {
+    background: #fef9e7;
+    border: 2px solid #f0c040;
+    color: #7d6608;
+    font-weight: 700;
+    font-size: 0.84rem;
+    padding: 10px 24px;
+    transform: rotate(0deg);
+    border-radius: 6px;
+    text-align: center;
+    position: relative;
+  }
+  .diamond::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border: 2px solid #f0c040;
+    border-radius: 6px;
+    transform: rotate(4deg);
+    z-index: -1;
+    background: #fef9e7;
+  }
+
+  /* arrow */
+  .arrow {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #aaa;
+    line-height: 1;
+    margin: 2px 0;
+    user-select: none;
+  }
+  .arrow.red-a  { color: #e57373; }
+  .arrow.green-a { color: #58d68d; }
+
+  /* branch labels */
+  .branch-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .branch-label.left  { color: #c0392b; }
+  .branch-label.right { color: #27ae60; }
+
+  /* divider line */
+  .time-divider {
+    grid-column: 1 / -1;
+    height: 1px;
+    background: #dde3ea;
+    margin: 16px 0 14px;
+    position: relative;
+  }
+
+  /* legend */
+  .legend {
+    max-width: 860px;
+    margin: 28px auto 0;
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    font-size: 0.78rem;
+    color: #555;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .leg-line {
+    width: 32px; height: 3px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<h2>Ngày T: Giao dịch phát sinh</h2>
+
+<div class="diagram-wrap">
+
+  <!-- ── Timeline ── -->
+  <div class="timeline">
+    <div class="tl-label">Ngày T</div>
+    <div class="tl-spacer" style="--h:130px"></div>
+    <div class="tl-label">19:00</div>
+    <div class="tl-spacer" style="--h:130px"></div>
+    <div class="tl-label">22:00</div>
+    <div class="tl-spacer" style="--h:80px"></div>
+    <div class="tl-label">22h+</div>
+    <div class="tl-spacer" style="--h:110px"></div>
+    <div class="tl-label">T+1</div>
+  </div>
+
+  <!-- ── Flow columns ── -->
+  <div class="cols">
+
+    <!-- Column headers -->
+    <div class="col-header th1">TH1 – 19h → 22h</div>
+    <div class="col-header th2">TH2 – Sau 22h</div>
+
+    <!-- Shared start -->
+    <div style="grid-column:1/-1; display:flex; justify-content:center; margin-bottom:8px;">
+      <div class="box start" style="min-width:260px;">
+        <strong>TGH hạch toán thành công</strong>
+      </div>
+    </div>
+    <div style="grid-column:1/-1;" class="arrow">↓</div>
+
+    <!-- Decision diamond -->
+    <div class="diamond-wrap">
+      <div class="diamond">Mấy giờ?</div>
+    </div>
+
+    <!-- Branch arrows + labels -->
+    <div class="branch-label left">19 – 20h ↓</div>
+    <div class="branch-label right">Sau 22h ↓</div>
+
+    <!-- TH1 step 1 | TH2 step 1 -->
+    <div class="box blue">
+      <strong>TGH ghi nhận</strong>
+      <span>value date = ngày T</span>
+    </div>
+    <div class="box blue">
+      <strong>TGH ghi nhận</strong>
+      <span>value date = T+1</span>
+    </div>
+
+    <div class="arrow red-a">↓</div>
+    <div class="arrow green-a">↓</div>
+
+    <!-- TH1 step 2 | TH2 step 2 -->
+    <div class="box warn">
+      <strong>Kondor: không HT</strong>
+      <span>Đã đóng cửa lúc 19h</span>
+    </div>
+    <div class="box warn">
+      <strong>Chưa lên T24</strong>
+      <span>trước 22h → không quét</span>
+    </div>
+
+    <div class="arrow red-a">↓</div>
+    <div class="arrow green-a" style="visibility:hidden">↓</div>
+
+    <!-- TH1 step 3 -->
+    <div class="box red">
+      <strong>Không map được</strong>
+      <span>Chỉ có trên T24</span>
+    </div>
+    <div></div><!-- empty TH2 slot -->
+
+    <div class="time-divider"></div>
+
+    <!-- 22h sweep -->
+    <div class="box red">
+      <strong>Auto đóng trạng thái</strong>
+      <span>T24 quét lúc 22h</span>
+    </div>
+    <div class="box blue">
+      <strong>T24 hạch toán ✓</strong>
+      <span>Sau 22h → value T+1</span>
+    </div>
+
+    <div class="arrow red-a">↓</div>
+    <div class="arrow green-a">↓</div>
+
+    <!-- TH1 fail | TH2 Kondor -->
+    <div class="box fail">⚠ Giao dịch thất bại</div>
+    <div class="box purple">
+      <strong>Kondor hạch toán</strong>
+      <span>Ngày T+1, value T+1</span>
+    </div>
+
+    <div style="visibility:hidden" class="arrow">↓</div>
+    <div class="arrow green-a">↓</div>
+
+    <!-- TH2 map -->
+    <div></div>
+    <div class="box green">
+      <strong>Map thành công ✓</strong>
+      <span>Value date khớp T+1</span>
+    </div>
+
+    <div style="visibility:hidden" class="arrow">↓</div>
+    <div class="arrow green-a">↓</div>
+
+    <!-- TH2 done -->
+    <div></div>
+    <div class="box done">✓ Deal Done</div>
+
+  </div><!-- /cols -->
+</div><!-- /diagram-wrap -->
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item">
+    <div class="leg-line" style="background:#e57373"></div>
+    Luồng thất bại
+  </div>
+  <div class="legend-item">
+    <div class="leg-line" style="background:#58d68d"></div>
+    Luồng thành công
+  </div>
+  <div class="legend-item">
+    <div class="leg-line" style="background:#f4d03f"></div>
+    Điểm rẽ nhánh
+  </div>
+</div>
+
+</body>
+</html>
