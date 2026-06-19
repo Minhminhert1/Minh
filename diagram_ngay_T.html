@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ngày T: Giao dịch phát sinh</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f7fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  h2 {
+    color: #1a1a2e;
+    margin-bottom: 24px;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+  }
+  .mermaid {
+    background: white;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    max-width: 900px;
+    width: 100%;
+  }
+  .legend {
+    margin-top: 20px;
+    display: flex;
+    gap: 24px;
+    font-size: 0.85rem;
+    color: #555;
+  }
+  .legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<h2>Ngày T: Giao dịch phát sinh</h2>
+
+<div class="mermaid">
+flowchart TD
+    A["🏦 TGH hạch toán thành công"]
+    A --> B{Mấy giờ?}
+
+    B -- "19 – 20h" --> C["TGH ghi nhận\nvalue date = ngày T"]
+    B -- "Sau 22h" --> G["TGH ghi nhận\nvalue date = T+1"]
+
+    C --> D["⚠️ Chưa có Kondor\nKondor: đã đóng ghi nhận\n(đã đóng sau 19h)"]
+    D --> E["🔄 TGH quét đóng trạng thái\n(lúc 22h)"]
+    E --> F1["KO thấy giao dịch\nđối ứng T K+"]
+    F1 --> F2["✅ Đóng trạng thái\n(ngày T)"]
+
+    G --> H["KO biết đóng trạng thái\n(TGH đã quét xong lúc 22h)"]
+    H --> I["🏦 Kondor hạch toán ED\nValue date = T+1"]
+    I --> J["🔗 Map với GO T TGH"]
+    J --> K["✅ Deal Done"]
+
+    style A fill:#4a90d9,color:#fff,stroke:#2c6fad
+    style B fill:#f0c040,color:#333,stroke:#c99a00
+    style C fill:#e8f4fd,stroke:#4a90d9
+    style D fill:#fff3cd,stroke:#ffc107
+    style E fill:#e8f4fd,stroke:#4a90d9
+    style F1 fill:#ffeaea,stroke:#e05050
+    style F2 fill:#d4edda,stroke:#28a745,color:#155724
+    style G fill:#e8f4fd,stroke:#4a90d9
+    style H fill:#ffeaea,stroke:#e05050
+    style I fill:#e8f4fd,stroke:#4a90d9
+    style J fill:#e8f4fd,stroke:#4a90d9
+    style K fill:#d4edda,stroke:#28a745,color:#155724
+</div>
+
+<div class="legend">
+  <span><span class="dot" style="background:#4a90d9"></span> Xử lý TGH</span>
+  <span><span class="dot" style="background:#f0c040"></span> Điều kiện</span>
+  <span><span class="dot" style="background:#d4edda;border:1px solid #28a745"></span> Hoàn thành</span>
+  <span><span class="dot" style="background:#ffeaea;border:1px solid #e05050"></span> Chú ý / Vấn đề</span>
+</div>
+
+<script>
+  mermaid.initialize({ startOnLoad: true, theme: 'default', flowchart: { curve: 'basis' } });
+</script>
+</body>
+</html>
