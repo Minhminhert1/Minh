@@ -2,7 +2,8 @@
 
 ## Pattern kỹ thuật đã học
 
-*(cập nhật khi phát hiện pattern lặp lại trên FX)*
+- **Funding yếu → bid target cao (logic carry)**: đúng KHI funding yếu trật tự & kỳ vọng còn tiếp diễn. Bẫy: funding yếu + vị thế crowded → "bid cao nhất" = rủi ro unwind lớn nhất (funding bật mạnh → đóng lệnh hàng loạt). Phân biệt funding yếu *chủ động* (dovish, theo được) vs *bị động/quá đà* (sắp đảo, cảnh giác).
+- **USD/VND KHÁC khung carry**: bid dồn vào USD do kỳ vọng tỷ giá tăng (depreciation), KHÔNG do swap (VND mới là đồng lãi cao). Không áp thẳng "funding yếu → bid cao" cho USD/VND.
 
 ---
 
