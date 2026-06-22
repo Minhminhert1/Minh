@@ -6,7 +6,11 @@
 
 ## Bài học tổng hợp
 
-*(cập nhật sau mỗi turn)*
+### Nghịch lý cốt lõi USD/VND (22/6/2026) — chìa khóa hiểu toàn bộ
+- **Kinh tế VN khỏe bề ngoài nhưng dòng USD ngắn hạn yếu**: GDP Q1 +7,83% (cao nhất 15 năm), FDI đăng ký Q1 15,2 tỷ (+42,9%) → đỡ VND dài hạn. NHƯNG cán cân TM lật từ thặng dư 3,57 tỷ → thâm hụt 7,9 tỷ (đến 15/4, nhập khẩu +28%), kiều hối HCM Q1 −16,9% → cung USD ngắn hạn cạn.
+- **SBV bị TRÓI TAY → buộc dùng vũ khí lãi suất**: (1) dự trữ mỏng (109,6 tỷ 1/2022 → 83,6 tỷ 12/2025; M2/dự trữ >940% vs an toàn <400%; phủ nhập khẩu thấp nhất 10 năm) → không thể đốt dự trữ; (2) Mỹ áp thuế 20% + USTR dán nhãn thao túng tiền tệ → không thể phá giá công khai. ⇒ chỉ còn đẩy lãi suất VND để phạt short-VND. Đây là lý do gốc front-end đường cong vọt lên.
+- **Hệ quả phái sinh**: vol bị nén ở spot, DỒN sang front-end đường cong + chênh NDF offshore/onshore. Săn biến động ở đó, không ở tỷ giá.
+- Report toàn diện: `reports/2026-06-22-usdvnd-phan-tich-toan-dien.md`.
 
 ---
 
