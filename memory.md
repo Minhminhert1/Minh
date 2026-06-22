@@ -37,7 +37,10 @@
 
 ## Pattern đã học
 
-*(ghi khi phát hiện pattern lặp lại)*
+- **Carry trade 2026 = vùng nguy hiểm, không phải mùa đẹp**: BoJ nâng lãi (16/6) → JPY funding đắt lên → gap co lại; ~500 tỷ USD short JPY treo lơ lửng → rủi ro unwind cao (tiền lệ 8/2024: Nikkei −12%, S&P −6%).
+- **Gap lãi suất KHÔNG cứu được VND**: giữ VND lãi cao hơn USD (carry dương trên giấy) nhưng USD/VND leo về 26.500 → lỗ tỷ giá ăn sạch lãi → giữ USD vẫn thắng. Logic tỷ giá > logic lãi suất khi DXY mạnh.
+- **Bản đồ lãi suất 6/2026**: Fed 4,25–4,50% (giữ, hawkish), Banxico 6,50% (dừng hạ), ECB +25bp, BoJ +25bp, BoC kẹt.
+- **2 van liên thông quyết carry + EM**: PCE Mỹ (hướng USD) & BoJ/can thiệp JPY (carry unwind). USD mạnh + JPY giật = xấu nhất cho carry & VND.
 
 ---
 
