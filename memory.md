@@ -12,8 +12,14 @@
 
 ## Các cặp tiền đang theo dõi
 
-- **USD/VND** (user yêu cầu 22/6/2026)
-- DXY, USD/JPY (tham chiếu sức mạnh USD)
+- **CHỈ USD/VND** — user chốt focus duy nhất (22/6/2026). Không phân tích cặp khác trừ khi được yêu cầu.
+- DXY, USD/JPY: chỉ dùng làm **tham chiếu driver** cho USD/VND, không trade riêng.
+
+### Khung phân tích USD/VND (đặc thù — KHÔNG áp khung carry cổ điển)
+- Là **thả nổi có quản lý**: SBV đặt **tỷ giá trung tâm** + biên độ → giá NHTM kịch trần là tín hiệu căng.
+- Driver chính của **spot**: kỳ vọng tỷ giá (DXY/USD mạnh → áp lực tăng), cung-cầu USD nội địa, can thiệp/điều hành SBV.
+- Gap lãi suất áp vào qua **điểm kỳ hạn (forward points) & NDF offshore**: chênh lãi VND–USD = giá forward. Đây là cầu nối với nghiệp vụ phái sinh.
+- Bài học đã chốt: gap lãi suất KHÔNG cứu spot khi DXY mạnh (lỗ tỷ giá ăn sạch lãi chênh).
 
 ---
 
