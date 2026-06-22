@@ -15,7 +15,9 @@
 
 ## Cách giải thích đã hiệu quả với user này
 
-*(ghi ẩn dụ/ví dụ nào làm user "à hiểu rồi")*
+- **User KHÔNG thích report nhiều bảng/bullet rời rạc** — kêu "rời rạc, đọc không hiểu". Thích **kể chuyện liền mạch, đoạn văn nối nhau bằng nhân-quả, có kết luận hành động rõ**. Khi viết report cho user này: ưu tiên prose story-telling, tối thiểu bảng, mỗi phần dẫn sang phần sau.
+- Ẩn dụ hiệu quả: **SBV = người giữ cửa** không cấm mua USD mà "làm cho việc ôm USD tốn tiền" (đẩy lãi VND) → giải thích vì sao front-end đường cong vọt lên.
+- Khung 3 ngã rẽ + 1 ngòi nổ (PCE) dễ theo hơn liệt kê kịch bản rời.
 
 ---
 
