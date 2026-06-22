@@ -21,6 +21,14 @@
 - Gap lãi suất áp vào qua **điểm kỳ hạn (forward points) & NDF offshore**: chênh lãi VND–USD = giá forward. Đây là cầu nối với nghiệp vụ phái sinh.
 - Bài học đã chốt: gap lãi suất KHÔNG cứu spot khi DXY mạnh (lỗ tỷ giá ăn sạch lãi chênh).
 
+### ANGLE CHỐT (22/6/2026): USD/VND PHÁI SINH — Forward/NDF
+- Công thức: `Điểm kỳ hạn ≈ S × (r_VND − r_USD) × t/360`. Lãi VND > USD → forward LUÔN dương điểm. Long USD forward = trả trước phần chênh lãi (carry âm).
+- **Cú twist SBV (quan trọng nhất)**: SBV đẩy lãi suất VND lên để PHẠT short-VND → điểm kỳ hạn phình to → long USD forward ngắn hạn rất đắt/dễ bị siết. Đây là cơ chế đặc thù USD/VND.
+- Data 22/6: VND O/N liên NH vọt 6,97%→**11%** (1/6), USD O/N 3,65% → gap ngắn ~7,3% → điểm kỳ hạn ngắn đắt. SBV bơm OMO >35.000 tỷ @4,5% (tín dụng 4,42% > huy động 2,6% → căng thanh khoản).
+- **View forward/NDF**: 🔴 không long USD forward ≤1M (carry âm đỉnh, squeeze); 🟡 view mất giá cấu trúc → ưu tiên 3–6M; 🟢 canh chênh NDF offshore vs onshore = thước đo áp lực đầu cơ thật.
+- Van 2 chiều ngược nhau trên cùng vị thế: PCE nóng → spot ép lên (tốt long USD) NHƯNG SBV siết lãi VND → điểm kỳ hạn càng đắt.
+- **Còn thiếu để định lượng**: đường cong forward points USD/VND theo tenor + level NDF offshore (nguồn public không ra số; cần Bloomberg/Reuters/desk).
+
 ---
 
 ## Bias thị trường hiện tại
