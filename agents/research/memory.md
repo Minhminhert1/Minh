@@ -2,13 +2,15 @@
 
 ## Nguồn data đáng tin cậy
 
-*(cập nhật khi tìm được nguồn tốt)*
+- **USD/VND**: NHNN (tỷ giá trung tâm), Vietcombank/HSBC (NHTM), vneconomy, cafef, danviet, baoquocte
+- **USD/macro toàn cầu**: tradingeconomics, MUFG Research, forex.com, J.P.Morgan
+- **Lịch kinh tế**: litefinance weekly, fxstreet, forexfactory, investing.com
 
 ---
 
 ## Nguồn data không đáng tin
 
-*(cập nhật khi phát hiện nguồn sai/chậm)*
+- vtcnews.vn: chặn WebFetch (HTTP 403) → không lấy được chi tiết, chỉ dùng được snippet search
 
 ---
 

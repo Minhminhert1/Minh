@@ -8,7 +8,9 @@
 
 ## Macro relationship đã xác nhận
 
-*(ví dụ: "DXY tăng → EURUSD giảm" — ghi khi có bằng chứng)*
+- **DXY mạnh → áp lực tăng lên USD/VND** (22/6/2026: DXY đỉnh 13 tháng trùng giai đoạn NHTM kịch trần 26.433).
+- **Fed hawkish + lạm phát US cao → USD mạnh** → kéo cả rổ EM yếu, gồm VND.
+- **Core PCE** là chỉ báo lạm phát Fed dùng chính → là catalyst lớn nhất cho hướng USD ngắn hạn.
 
 ---
 
