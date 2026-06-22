@@ -2,7 +2,7 @@
 
 ## Mục đích repo
 Hệ thống multi-agent phục vụ nghiên cứu và phân tích thị trường Forex.
-Gồm 6 agent với vai trò riêng biệt, phối hợp để đưa ra phân tích chất lượng cao.
+Gồm 7 agent với vai trò riêng biệt, phối hợp để đưa ra phân tích chất lượng cao.
 
 ---
 
@@ -27,7 +27,8 @@ agents/
 ├── analysis/          ← phân tích kỹ thuật + macro
 ├── strategy/          ← đề xuất setup giao dịch
 ├── reviewer/          ← phản biện, tìm lỗ hổng
-└── journalist/        ← ghi chép, học từ kết quả
+├── journalist/        ← ghi chép, học từ kết quả
+└── teacher/           ← giải thích cho user dễ hiểu, liền mạch
 ```
 
 ---
@@ -50,6 +51,9 @@ User query
 [ORCHESTRATOR] tổng hợp → báo cáo cho user
     ↓
 [JOURNALIST] ghi lại toàn bộ quá trình
+
+[TEACHER] kích hoạt khi user chưa hiểu / cần giải thích lại
+   → dịch kết quả của team thành 1 mạch dễ hiểu, không rời rạc
 ```
 
 ---
@@ -64,6 +68,7 @@ User query
 | Strategy có rule mới nào? | `agents/strategy/memory.md` |
 | Reviewer phát hiện blind spot gì? | `agents/reviewer/memory.md` |
 | Trade outcome ra sao? | `agents/journalist/memory.md` |
+| User hiểu lầm gì / cách giảng nào hiệu quả? | `agents/teacher/memory.md` |
 
 ---
 
@@ -92,3 +97,4 @@ User query
 | Ngày | Version | Thay đổi |
 |------|---------|---------|
 | 2026-06-19 | v1.0 | Khởi tạo FX multi-agent system |
+| 2026-06-22 | v1.1 | Thêm agent TEACHER (giáo viên) — giải thích cho user dễ hiểu, liền mạch |
