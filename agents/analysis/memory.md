@@ -1,23 +1,13 @@
-# Memory — Analysis Agent
+# Memory — Analysis Squad (chung)
 
-## Pattern kỹ thuật đã học
+> Memory riêng từng con ở `a1-curve/`, `a2-insight/`, `a3-forecast/`.
+> File này giữ bài học chung cho cả nhóm phân tích.
 
-*(cập nhật khi phát hiện pattern lặp lại trên FX)*
+## Mối quan hệ macro ↔ swap đã xác nhận
+*(vd: "SBV hút tín phiếu → O/N tăng → swap points ngắn hạn dương hơn" — ghi khi có bằng chứng)*
 
----
+## Nhận định sai của nhóm & nguyên nhân
+*(quan trọng nhất để học — phối hợp với sổ lỗi ở memory.md root)*
 
-## Macro relationship đã xác nhận
-
-*(ví dụ: "DXY tăng → EURUSD giảm" — ghi khi có bằng chứng)*
-
----
-
-## Nhận định đã sai & nguyên nhân
-
-*(ghi sau khi biết kết quả thực tế — quan trọng nhất để học)*
-
----
-
-## Indicator nào hoạt động tốt nhất với user này
-
-*(cập nhật theo phản hồi của user)*
+## Cách phối hợp A1→A2→A3 hiệu quả
+*(ghi khi tìm ra cách bàn giao tốt giữa 3 con)*
