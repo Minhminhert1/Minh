@@ -1,0 +1,54 @@
+name: Morning Brief — Swap USD/VND
+
+# Chạy 05:00 ICT mỗi ngày = 22:00 UTC (UTC+7).
+# LƯU Ý: GitHub chỉ chạy scheduled workflow trên nhánh MẶC ĐỊNH của repo,
+# nên file này phải được merge vào nhánh mặc định mới kích hoạt theo lịch.
+# Giờ chạy có thể trễ vài phút do hàng đợi của GitHub.
+on:
+  schedule:
+    - cron: '0 22 * * *'
+  workflow_dispatch: {}   # cho phép chạy tay để test
+
+permissions:
+  contents: write          # để commit báo cáo vào reports/
+
+jobs:
+  morning-brief:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run morning brief (PB-4)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          TODAY=$(TZ=Asia/Ho_Chi_Minh date +%F)
+          claude -p "Đọc CLAUDE.md, system/playbooks.md (PB-4), system/watchlist.md, \
+          system/calendar.md và memory.md. Chạy báo cáo sáng Swap USD/VND cho ngày $TODAY: \
+          gom số qua đêm (LNH O/N, swap points 1M/3M/6M, SOFR, DXY, CNY, OMO/tín phiếu SBV), \
+          nêu curve có gì đổi, 1-2 insight nóng, kiểm tra ngưỡng watchlist (cảnh báo nếu có), \
+          và sự kiện 48h tới từ calendar. Ghi kết quả theo template trong reports/README.md \
+          vào đúng file reports/$TODAY.md. Dữ liệu thiếu thì ghi rõ thiếu, không bịa." \
+          --permission-mode acceptEdits --allowedTools "Read,Write,WebSearch,WebFetch"
+
+      - name: Commit report
+        run: |
+          TODAY=$(TZ=Asia/Ho_Chi_Minh date +%F)
+          git config user.name "swap-research-bot"
+          git config user.email "noreply@github.com"
+          if [ -n "$(git status --porcelain reports/)" ]; then
+            git add reports/
+            git commit -m "report: morning brief $TODAY"
+            git push
+          else
+            echo "Không có báo cáo mới để commit."
+          fi

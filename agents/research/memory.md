@@ -1,27 +1,15 @@
-# Memory — Research Agent
+# Memory — Research Lead (chung)
 
-## Nguồn data đáng tin cậy
+> Memory riêng từng mảng ở `r1-rates-liquidity/` … `r6-others/`.
+> File này giữ bài học điều phối & chuẩn hóa data của cả squad.
 
-*(cập nhật khi tìm được nguồn tốt)*
+## Bài học chuẩn hóa data
+*(format nào dễ cho Analysis đọc, lỗi schema hay gặp)*
 
----
+## Mảng nào hay thiếu data
+*(ghi khi Analysis yêu cầu mà squad không có → giao researcher đi tìm nguồn)*
 
-## Nguồn data không đáng tin
-
-*(cập nhật khi phát hiện nguồn sai/chậm)*
-
----
-
-## Data thường bị thiếu
-
-*(ghi khi Analysis yêu cầu data mà Research không có)*
-
----
-
-## Lịch sự kiện định kỳ quan trọng
-
-- NFP: Thứ 6 đầu tháng
-- CPI US: Giữa tháng
-- FOMC: 8 lần/năm
-- ECB: 8 lần/năm
-- BOJ: 8 lần/năm
+## Lịch sự kiện định kỳ (tham chiếu nhanh — chi tiết ở system/calendar.md)
+- Cuối quý (BCTC): 31/3, 30/6, 30/9, 31/12 → funding VND căng
+- FOMC: 8 lần/năm · US CPI: giữa tháng · NFP: thứ 6 đầu tháng
+- Đáo hạn OMO/tín phiếu: theo đợt
