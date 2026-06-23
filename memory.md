@@ -36,10 +36,12 @@
 
 | Chỉ số | Giá trị gần nhất | as-of |
 |--------|------------------|-------|
-| LNH O/N | — | — |
-| Swap 1M / 3M | — | — |
-| Tỷ giá trung tâm | — | — |
-| SOFR / DXY | — | — |
+| LNH O/N | 1.65% (−125bps/phiên) 🔴 | 2026-06-23 |
+| LNH 1W / 2W | 1.80% / 3.55% (−125/−135bps) 🔴 | 2026-06-23 |
+| LNH 1M / 3M / 1Y | 3.55% / 3.70% / 3.80% (gần như đứng) | 2026-06-23 |
+| Tỷ giá trung tâm | 25.183 | 2026-06-22 |
+| USD/VND spot | ~26.43 (sát trần) | 2026-06-22 |
+| SOFR (ON) | 3.62% | 2026-06-18 |
 
 ---
 
@@ -47,6 +49,11 @@
 | Tenor/loại | Số dự báo | Đúng | Hit-rate | Ghi chú calibration |
 |------------|-----------|------|----------|---------------------|
 | *(cập nhật)* | | | | |
+
+### Sổ chờ chấm
+- **[2026-06-23] ON bật về ≥3.0% trong 3–7 phiên (quanh 26–30/06)** — Base ~55%. Chấm sau 30/06.
+  - Up-risk ~30%: nếu spot ép trần → SBV hút VND → ON 4–6%+ trong 1–2 tuần.
+  - Down ~15%: ON giữ 1.5–2.5% kéo dài qua chốt quý.
 
 ---
 
