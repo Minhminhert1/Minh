@@ -58,7 +58,7 @@
 | Chỉ số | Giá trị gần nhất | as-of |
 |--------|------------------|-------|
 | LNH O/N | **0.55%** (−110bps/phiên) 🔴 ALERT (thủng 1.0%) | 2026-06-24 |
-| LNH 1W / 2W | **3.70%** / 3.30% (1W +190bps spike turn / 2W −25bps) | 2026-06-24 |
+| LNH 1W / 2W | **3.70% → bid 4.0 xuyên offer cũ 3.80** (turn squeeze nóng lên) / 2W 3.30% | 2026-06-24 |
 | LNH 1M / 3M / 1Y | 3.35% / 3.35% / 3.80% (−20 / −35 / 0bps) | 2026-06-24 |
 | Tỷ giá trung tâm | 25.183 | 2026-06-22 |
 | USD/VND spot | ~26.43 (sát trần) | 2026-06-22 |
