@@ -1,4 +1,4 @@
-name: Morning Brief — Swap USD/VND
+name: Morning Brief — USD/VND
 
 # Chạy 05:00 ICT mỗi ngày = 22:00 UTC (UTC+7).
 # LƯU Ý: GitHub chỉ chạy scheduled workflow trên nhánh MẶC ĐỊNH của repo,
@@ -27,17 +27,21 @@ jobs:
       - name: Install Claude Code
         run: npm install -g @anthropic-ai/claude-code
 
-      - name: Run morning brief (PB-4)
+      - name: Run morning brief (PB-DAILY)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           TODAY=$(TZ=Asia/Ho_Chi_Minh date +%F)
-          claude -p "Đọc CLAUDE.md, system/playbooks.md (PB-4), system/watchlist.md, \
-          system/calendar.md và memory.md. Chạy báo cáo sáng Swap USD/VND cho ngày $TODAY: \
-          gom số qua đêm (LNH O/N, swap points 1M/3M/6M, SOFR, DXY, CNY, OMO/tín phiếu SBV), \
-          nêu curve có gì đổi, 1-2 insight nóng, kiểm tra ngưỡng watchlist (cảnh báo nếu có), \
-          và sự kiện 48h tới từ calendar. Ghi kết quả theo template trong reports/README.md \
-          vào đúng file reports/$TODAY.md. Dữ liệu thiếu thì ghi rõ thiếu, không bịa." \
+          claude -p "Đọc CLAUDE.md, system/playbooks.md (PB-DAILY), system/sources.md, \
+          system/watchlist.md, system/calendar.md, agents/journalist/memory.md và memory.md. \
+          Chạy báo cáo sáng USD/VND cho ngày $TODAY theo PB-DAILY: \
+          (1) Journalist chấm dự báo nào tới hạn TRƯỚC (luật #13); \
+          (2) gom số qua đêm theo sources.md: tỷ giá TT SBV + spot + chợ đen + room tới trần, \
+          DXY, USD/CNH, SOFR, và (nếu là mode swap) LNH O/N + swap points 1M/3M/6M + OMO/tín phiếu; \
+          (3) nêu 'đổi gì qua đêm + 1-2 điểm đáng chú ý + watch level'; \
+          (4) kiểm tra ngưỡng watchlist (cảnh báo nếu chạm); (5) sự kiện 48h tới từ calendar. \
+          Ngắn, ra quyết định (luật #12). Ghi theo template reports/README.md vào reports/$TODAY.md. \
+          Số thiếu thì ghi rõ THIẾU + hạ độ tin, KHÔNG bịa/ước lượng rồi kết luận như thật (luật #8)." \
           --permission-mode acceptEdits --allowedTools "Read,Write,WebSearch,WebFetch"
 
       - name: Commit report

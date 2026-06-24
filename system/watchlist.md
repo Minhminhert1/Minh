@@ -29,6 +29,15 @@
 | CNY (USD/CNH) | đổi > **0.6%**/phiên | R3 |
 | NDF 1M offshore vs onshore | chênh > **ngưỡng bất thường** (cập nhật sau) | R6 |
 
+### Directional / macro (dashboard bản 19/06 — action trigger)
+| Chỉ số | Ngưỡng → hành động | Mảng |
+|--------|--------------------|------|
+| Chợ đen − trần chính thức | gap > **200đ** kéo dài → NHNN sắp nâng tỷ giá TT / can thiệp mạnh | R4 |
+| DXY (mức) | **≥ 103** → long thêm USD/VND · **≤ 97** → re-evaluate thesis bearish VND | R3 |
+| CPI VN YoY | **> 6.5%** → NHNN có thể buộc tăng lãi suất (VND mạnh tạm thời) | R2 |
+| Dự trữ ngoại hối | **< 70 tỷ USD** (< 2 tháng NK) → VND dễ tổn thương, tỷ giá tăng nhanh hơn | R4 |
+| Cán cân TM | Q2 **thặng dư > 2 tỷ** → yếu thesis bearish VND | R2 |
+
 ---
 
 ## Format cảnh báo

@@ -29,9 +29,17 @@
 
 ## Sắp tới (cập nhật thủ công/định kỳ)
 ```
-- [YYYY-MM-DD] [sự kiện] — kỳ vọng: [...] — kịch bản tác động curve: [...]
+- [~2026-07-đầu tháng] Cán cân TM VN tháng 5–6 — KEY: xác nhận/phủ nhận thesis thâm hụt cấu trúc.
+    Trigger: Q2 thặng dư > 2 tỷ → yếu thesis bearish VND (UOB 26.100 có cơ sở hơn).
+- [2026-06-30] Chốt quý 2 — funding VND căng; theo dõi turn 1W/2W (KHÔNG phải ON — bài học 06-24).
+- [~2026-07-29/30] FOMC tháng 7 — statement đổi giọng? → chân USD của curve + DXY.
+- [~2026-08-13] US CPI tháng 7 — định hướng Fed cho Q4.
+- [~2026-08] Section 301 quarterly review — rủi ro thuế quan VN (chưa imminent, mốc ~Q1/2027).
+- [~2026-09-16/17] FOMC tháng 9 — quyết định cuối trước Q4 (tăng thêm hay giữ?).
+- [2026-09-30] Chốt quý 3 — lặp lại căng funding cuối quý.
 ```
-*(R4 điền khi có ngày cụ thể; trước 1–2 ngày Orchestrator nhắc bạn.)*
+*(Ngày ⚠️ dự kiến theo appendix bản 19/06 — R4 xác nhận ngày chính thức; trước 1–2 ngày Orchestrator
+nhắc + Bộ não dựng 2–3 kịch bản.)*
 
 ---
 

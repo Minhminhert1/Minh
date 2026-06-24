@@ -40,3 +40,23 @@
 
 > **Phân biệt sản phẩm:** bản 19/06 là **directional SPOT/macro** (3–6 tháng). Báo cáo **swap
 > curve/rates** dùng cùng DNA nhưng "trái tim" là chênh lãi theo tenor + swap points (luật #9!).
+
+---
+
+## SCORECARD — Reviewer tự chấm TRƯỚC khi gửi (mỗi mục 0/1/2; cần ≥ 16/20)
+
+| # | Tiêu chí | 0 = thiếu | 2 = đạt chuẩn 19/06 |
+|---|----------|-----------|---------------------|
+| 1 | Thesis box (Bias/Conf/Horizon/Target + 1 dòng) | không có | đọc 10s hiểu kèo |
+| 2 | Xương sống tự sự đáng nhớ | liệt kê rời | có khung tên + nhớ được |
+| 3 | Tín hiệu ẩn (cơ chế dưới bề mặt) | mô tả giá | phát hiện cơ chế ít người thấy |
+| 4 | Mọi số neo nguồn + ngày | số trôi nổi | có nguồn + as-of + list cuối |
+| 5 | Một "trái tim" đào sâu + base-rate | dàn trải | 1 driver + lịch sử |
+| 6 | Ma trận kịch bản + EV | 1 chiều | lưới 2D + EV |
+| 7 | Reviewer N lỗ hổng có mức độ + kịch bản đảo chiều | khen suông | ≥3 lỗ hổng + worst-case |
+| 8 | Dashboard watch-level + trigger + vô hiệu hóa | không | có trigger 1 con số |
+| 9 | Phân khúc hành động theo đối tượng | chung chung | trader/NK/XK/FDI riêng |
+| 10 | Ngắn-ra-quyết-định + sanity-check số (luật #10,#12) | độn | mỗi mục đổi 1 quyết định |
+
+> < 16/20 → **chưa gửi**: Reviewer chỉ rõ mục thiếu, trả về Bộ não/Strategy bổ sung.
+> Số bất thường về độ lớn (luật #10) = tự động trượt mục #10 → dừng soi lại.
