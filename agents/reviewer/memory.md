@@ -14,7 +14,12 @@
 
 ## Lỗi lặp lại của team
 
-*(ghi khi cùng loại lỗi xuất hiện nhiều lần)*
+- **[2026-06-24] Reviewer không bắt được lỗi số vì không có ground-truth.** Lỗi trừ i_USD hai lần
+  lọt qua cả red-team. → Từ nay Reviewer **BẮT BUỘC**: (1) check convention/đơn vị input; (2) tái
+  tính số chủ chốt độc lập; (3) sanity-check độ lớn vs mốc thực tế (vd swap points 1Y ~800–1.100đ).
+  Không tái-tính = review vô nghĩa với lỗi định lượng. (Đã đưa vào schema §4 + CLAUDE.md #9/#10.)
+- **[2026-06-24] Cảnh giác "nghi thức rỗng":** nhiều wave/Opus mà thiếu data thì red-team chỉ làm
+  bề mặt sai trông tự tin hơn. Reviewer phải đòi **nguồn cho mỗi nhận định**, gắn cờ chỗ chỉ [ƯỚC LƯỢNG].
 
 ---
 

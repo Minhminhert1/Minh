@@ -61,8 +61,11 @@
 
 ```
 ## REVIEW
+- **Input đúng convention chưa?** Đơn vị + định nghĩa số gốc (i_VND? chênh lãi? điểm/đồng?) [khớp?]
+- **Tái tính số chủ chốt độc lập + sanity-check độ lớn** (đối chiếu mốc thực tế) [khớp / lệch tầm?]
+- **Mọi nhận định có FACT + nguồn neo chưa?** Chỗ nào chỉ [ƯỚC LƯỢNG] mà kết luận như thật → cờ.
 - Tấn công luận điểm mạnh nhất của A2/A3: [...]
-- Data nào sẽ chứng minh nhận định SAI? [nếu không trả lời được → loại]
+- Data nào sẽ chứng minh nhận định SAI? [observable cụ thể + mốc; không trả lời được → loại]
 - Blind spot phát hiện: [...]
 - Đánh giá: PASS / CẦN SỬA ([sửa gì]) / BẤT ĐỒNG ([nêu cả 2 phía])
 ```

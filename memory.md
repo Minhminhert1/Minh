@@ -7,6 +7,14 @@
 ## Bài học tổng hợp
 *(cập nhật sau mỗi turn — pattern thị trường VN, cách phối hợp agent)*
 
+- **[2026-06-24] SELF-REVIEW (vì sao chất lượng tụt so với 06-23):** Bản 06-23 tốt vì **neo dữ liệu
+  thật có nguồn + URL** (SOFR/FRED, spot, tin ON 11%, VDSC) và **ngắn, ra quyết định**. Bản 06-24
+  tệ vì: (1) **không tra web** — spawn 5 Opus suy từ cutoff rồi đóng dấu [ƯỚC LƯỢNG] → độn chữ;
+  (2) **nghi thức (3 wave + red-team) thay tư duy** — vẫn để lọt lỗi trừ i_USD hai lần;
+  (3) **dài hơn nhưng loãng hơn**; (4) **lật convention input 3 lần** vì không chốt định nghĩa.
+  → Đòn bẩy chất lượng = **DATA neo + 1 lượt phân tích sắc**, KHÔNG phải model tier hay số agent.
+  Đã ban luật #8–#13 + `system/sources.md` + checklist Reviewer tái-tính-số. **Đây là luật, không phải gợi ý.**
+
 - **[2026-06-24]** ON sụp 0.55% nhưng **1W vọt 3.70%** (>2W–3M) → KHÔNG phải "front flush".
   Overnight thật (đáo trước 30/06) dư; còn **funding bắc qua chốt quý căng ~3.7%**, dồn vào 1W.
   Bài học: đọc seasonality cuối quý ở **tenor bắc qua turn (1W/2W)**, đừng nhìn ON. ON thấp +
