@@ -3,13 +3,14 @@
 ## Pattern mùa vụ đã xác nhận (kèm data)
 | Pattern | Tác động quan sát | Lần gần nhất |
 |---------|-------------------|--------------|
-| BCTC cuối quý | funding căng, O/N tăng | ⚠️ 2026-06-24 KHÔNG xảy ra ở front: ON sụp 0.55% sát 30/06 |
+| BCTC cuối quý | funding căng — ở tenor bắc qua turn, KHÔNG nhất thiết ở ON | ✅ 2026-06-24 xác nhận: 1W spike 3.70% (ON vẫn 0.55%) |
 | Trước Tết | cầu tiền mặt tăng | |
 | Kỳ nộp thuế | hút VND tạm thời | |
 
 ## Ghi chú
-- **[2026-06-24] Seasonality cuối quý bị override bởi thanh khoản dư.** ON 0.55%, 1W 1.15% NGAY
-  trước chốt quý — ngược kỳ vọng "funding căng → ON tăng". Phí chốt quý KHÔNG biến mất mà
-  dồn vào **bậc nhảy 1W→2W (+215bps)**: chỉ kỳ hạn bắc qua 30/06 mới mang phí, còn front (đáo
-  trước turn) flush. ⇒ Bài học: đo phí chốt quý ở **điểm gãy turn**, đừng kỳ vọng ON tự tăng.
-- Cần R1/R4 xác nhận nguyên nhân dư front: OMO/tín phiếu đáo hạn? dòng tiền vào? tín dụng yếu?
+- **[2026-06-24] Seasonality cuối quý XÁC NHẬN, nhưng đọc đúng tenor.** ON 0.55% (same-day flush)
+  nhưng **1W spike 3.70%** > 2W–3M → squeeze chốt quý CÓ thật, dồn vào kỳ hạn bắc qua 30/06.
+  Bài học: pattern "cuối quý căng" hiện ở **1W/2W (bao phủ ngày chốt)**, KHÔNG ở ON. Bank dư
+  thanh khoản same-day vẫn hoard để vuông sổ qua ngày báo cáo → đẩy giá 1W phủ 30/06.
+- (Đính chính nội bộ: lần đầu đọc nhầm 1W=1.15 → tưởng seasonality bị phá; 1W thực = 3.70.)
+- Cần R1/R4 xác nhận: nguyên nhân ON dư same-day (OMO/tín phiếu đáo hạn? tín dụng yếu?).
