@@ -15,6 +15,14 @@
   → Đòn bẩy chất lượng = **DATA neo + 1 lượt phân tích sắc**, KHÔNG phải model tier hay số agent.
   Đã ban luật #8–#13 + `system/sources.md` + checklist Reviewer tái-tính-số. **Đây là luật, không phải gợi ý.**
 
+- **[2026-06-24] v3.0 — quay về đơn giản của v1.** Chẩn đoán (bằng chứng repo): v2.0 (`368722e`)
+  làm tụt chất lượng vì (1) đập vụn 1 bộ não Opus → A1/A2/A3 (A3 còn hạ Sonnet) → mất xương sống
+  tự sự; (2) cho **Strategy ngủ** → mất layer setup (nửa giá trị bản 19/06); (3) bó hẹp sứ mệnh vào
+  swap-rates; (4) thêm giàn giáo (schema cứng, model-cap) thay tư duy. Bản vàng 19/06 do **v1: 1
+  Analysis Opus dệt macro+kỹ thuật+bull/bear + 1 Strategy active**. → v3: gộp bộ não, **đánh thức
+  Strategy**, hạ swap xuống PB-SWAP, R/A sub thành lăng kính tùy chọn; giữ luật #8–#15 + template +
+  system/. **Luật #15: không tái lập team — tiến hóa qua memory/luật, không reorg.**
+
 - **[2026-06-24] CHUẨN VÀNG = báo cáo USDVND 19/06** (`benchmarks/2026-06-19-USDVND-gold-standard.pdf`).
   DNA làm nó hay: (1) thesis-first box; (2) **xương sống tự sự đáng nhớ** ("3 làn sóng", "đường biên
   26.550"); (3) **đào tín hiệu ẩn** (forward hủy ngang = trần ngầm câu giờ); (4) mọi số neo nguồn+ngày;

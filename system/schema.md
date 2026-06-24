@@ -33,26 +33,27 @@
 
 ---
 
-## 3. Analysis → Reviewer / Orchestrator
+## 3. Analysis (BỘ NÃO) → Strategy / Reviewer / Orchestrator
+
+> v3: MỘT mạch, không tách A1/A2/A3 thành báo cáo rời. Convention input phải khai báo trước (luật #9).
 
 ```
-## ANALYSIS — [chủ đề] — [ngày]
+## PHÂN TÍCH — [USD/VND hoặc tenor] — [ngày]
+### Thesis (1 dòng) | Bias [BULL/BEAR/NEUTRAL] | Confidence [L/M/H] | Horizon
+### Macro 2 phía: VN [...] | Global [...]   — mỗi điểm có FACT + nguồn
+### Trái tim: [driver cốt lõi] — đào sâu + base-rate lịch sử
+### Tín hiệu ẩn: [cơ chế ít người thấy, không mô tả bề mặt]
+### (MODE SWAP nếu input là curve):
+    - Convention: [i_VND? chênh lãi? swap points?]  ← BẮT BUỘC
+    - Shape | Swap points (đồng, đã sanity-check) | Fair value/CIP | Insight tenor (đa giả thuyết)
+### Bull case | Bear case | Điều kiện vô hiệu hóa
+### Forecast (FALSIFIABLE): [số] trong [mốc] | trigger 1 con số: [...] | xác suất [%]
+    (dẫn base-rate đã chấm hoặc ghi "prior") | Pre-mortem: [nếu sai, lý do khả dĩ nhất]
+```
 
-### A1 · Curve
-- Hình dạng: [steepen/flatten/twist/...] | điểm bất thường: [kink ở tenor nào]
-- Fair value gap: [tenor X lệch ~Y điểm so với CIP/lịch sử]
-
-### A2 · Insight theo tenor (ĐA GIẢ THUYẾT)
-- Tenor [X]: hiện tượng [...]
-  • Giả thuyết 1: [...] — ủng hộ: [...] | phản đối: [...]
-  • Giả thuyết 2: [...] — ủng hộ: [...] | phản đối: [...]
-  • Nghiêng về: [GT số mấy] vì [...]
-- Base rate: [thống kê lịch sử liên quan]
-
-### A3 · Forecast (FALSIFIABLE — bắt buộc)
-- Dự báo: [tenor/curve] về [con số] trong [mốc thời gian]
-- Điều kiện kích hoạt: [...]
-- Xác suất: [%] | Pre-mortem: "nếu sai, lý do khả dĩ nhất: [...]"
+## 3b. Analysis → Strategy (khi nhận định đủ rõ)
+```
+- Bias + confidence + key levels + điều kiện vô hiệu hóa → Strategy dựng setup (xem agents/strategy)
 ```
 
 ---

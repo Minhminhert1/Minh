@@ -1,49 +1,60 @@
-# playbooks.md — Đường ray theo loại câu hỏi
+# playbooks.md — Đường ray theo loại câu hỏi (v3)
 
-> Orchestrator chọn playbook theo intent để **chỉ gọi agent cần thiết** (tiết kiệm token)
-> và giữ chất lượng nhất quán. Không gọi thừa researcher.
+> Orchestrator chọn playbook theo intent. v3: mặc định chạy GỌN (Research → Bộ não → Strategy →
+> Reviewer), KHÔNG spawn cả roster (luật #11). Sub-lens R/A chỉ dùng nội bộ khi cần đào sâu.
+> Mọi báo cáo lớn theo `report-template.md` (luật #14).
 
 ---
 
-## PB-1 · "Đây là 1 đường curve, phân tích đi"
+## PB-FULL · "Phân tích USD/VND cho tôi" (báo cáo directional/macro — KIỂU BẢN 19/06) ⭐
 ```
-A1 (mổ curve) → R1 + R4 + R5 (giải thích nền) → A2 (insight/tenor) → A3 (dự báo) → Reviewer
+Research (tra sources.md: tỷ giá TT, spot, chợ đen, Fed/DXY, CPI/cán cân TM, dự trữ, NDF…)
+   → Bộ não (macro 2 phía → trái tim: gap lãi suất → tín hiệu ẩn → bull/bear → forecast)
+   → Strategy (setup + proxy + phân khúc đối tượng)
+   → Reviewer (lỗ hổng có mức độ + kịch bản đảo chiều)
+   → Orchestrator dựng báo cáo theo report-template
 ```
-Dùng khi: user dán swap curve / bảng swap points các tenor.
+Dùng khi: hỏi tổng quan/hướng USD/VND, báo cáo đầy đủ. **Đây là playbook chủ lực.**
 
-## PB-2 · "Vì sao tenor X biến động?"
+## PB-SWAP · "Đây là curve/tenor, phân tích đi" (MODE swap)
 ```
-R1 + R5 (+ R4 nếu nghi chính sách) → A2 (đa giả thuyết) → Reviewer
+Research (R1 rates/liquidity + R4 SBV + R5 flow) → Bộ não MODE SWAP
+   (định nghĩa convention #9 → shape → swap points #10 → fair value → insight/tenor → forecast)
+   → Strategy (pay/receive, RV tenor, turn play) → Reviewer
 ```
-Dùng khi: hỏi nguyên nhân một tenor cụ thể nhảy/tụt.
+Dùng khi: user dán swap curve / bảng theo tenor. **Bắt buộc định nghĩa convention trước khi tính.**
 
-## PB-3 · "Tuần/tháng tới ra sao?"
+## PB-WHY · "Vì sao [tenor/spot/chỉ số] biến động?"
 ```
-R3 + R4 (sự kiện sắp tới từ calendar) → A3 (kịch bản base/up/down) → Reviewer
+Research (mảng liên quan) → Bộ não (đa giả thuyết, tìm tín hiệu ẩn) → Reviewer
 ```
-Dùng khi: hỏi triển vọng, dự báo phía trước.
 
-## PB-4 · Báo cáo sáng (DAILY — tự động 5h)
+## PB-FWD · "Tuần/tháng tới ra sao?"
 ```
-R1 + R3 (Haiku, gom số qua đêm) → A1 (curve có đổi?) → A2 (1–2 insight nóng) → Orchestrator tóm tắt
+Research (calendar sự kiện sắp tới + global) → Bộ não (kịch bản + ma trận + EV) → Reviewer
 ```
-Output ngắn: "có gì đổi qua đêm + 1–2 điểm đáng chú ý". Ghi vào `reports/YYYY-MM-DD.md`.
 
-## PB-5 · Cảnh báo watchlist (TRIGGERED — biến động nóng)
+## PB-DAILY · Báo cáo sáng (tự động 5h)
 ```
-R(mảng liên quan) → A2 (tìm nguyên do) → JOURNALIST (tìm tiền lệ quá khứ trong memory) → Reviewer
+Research gom số qua đêm (gọn) → Bộ não (có gì đổi? 1–2 điểm nóng) → Orchestrator tóm tắt → reports/
 ```
-Dùng khi: một chỉ số chạm ngưỡng trong `system/watchlist.md`. Xem chi tiết ở watchlist.
+Output ngắn: "đổi gì qua đêm + 1–2 điểm đáng chú ý + watch level".
 
-## PB-6 · "Giải thích khái niệm / dạy tôi"
+## PB-ALERT · Cảnh báo watchlist (chạm ngưỡng)
 ```
-Orchestrator trả lời trực tiếp (giai đoạn học) — gọi A2 nếu cần ví dụ từ data thật
+Research (mảng liên quan) → Bộ não (nguyên do, đa giả thuyết) → Journalist (tiền lệ quá khứ) → Reviewer
 ```
-Dùng khi: user hỏi kiến thức nền, không cần data realtime.
+Xem `watchlist.md`. Báo ngay, không chờ 5h sáng.
+
+## PB-LEARN · "Giải thích khái niệm / dạy tôi"
+```
+Orchestrator/Bộ não trả lời trực tiếp — gọi ví dụ từ data thật nếu cần
+```
 
 ---
 
 ## Quy tắc chung
-- Playbook là gợi ý, không phải xiềng — thiếu data thì bổ sung researcher.
-- Luôn kết thúc bằng Reviewer trừ PB-6.
-- Mọi dự báo (A3) phải có mốc thời gian → Journalist mới chấm được.
+- Playbook là gợi ý, không phải xiềng — thiếu data thì bổ sung research (nguồn THẬT, luật #8).
+- Luôn kết thúc bằng Reviewer trừ PB-LEARN.
+- Mọi dự báo phải có **trigger 1 con số + mốc** → Journalist mới chấm được (luật #13).
+- Mặc định **1 bộ não dệt 1 mạch**; chỉ tách sub-lens thành subagent khi cần nhiều nguồn song song.

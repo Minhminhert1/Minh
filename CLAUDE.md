@@ -1,14 +1,18 @@
-# CLAUDE.md — Swap USD/VND Research Team
+# CLAUDE.md — FX / USD/VND Research Team (v3.0)
 
 ## Mục đích repo
-Hệ thống multi-agent phục vụ **nghiên cứu & phân tích giao dịch FX Swap USD/VND**.
-Trọng tâm giai đoạn này: **HỌC** — thu thập sâu → phân tích → bóc insight cho từng
-tenor → dự báo curve. Chưa auto-trade, chưa risk/compliance.
+Hệ thống multi-agent nghiên cứu & phân tích **FX USD/VND**: bức tranh **directional + vĩ mô**
+là chính, **swap curve/rates** là một MODE chuyên sâu (không phải toàn bộ danh tính team).
+Đầu ra mục tiêu = báo cáo đạt **chuẩn vàng 19/06** (`benchmarks/`): có thesis, xương sống tự sự,
+tín hiệu ẩn, neo data thật, setup hành động.
 
-> Bản chất sản phẩm: Swap USD/VND = đặt view lên **chênh lệch lãi suất VND–USD**
-> và **hình dạng swap curve theo tenor**. Rủi ro spot bị triệt tiêu (2 leg ngược
-> chiều cùng notional). Biến số lớn nhất: **thanh khoản VND + động thái SBV**.
-> Giá nằm ở **swap points = Forward − Spot ≈ chênh lệch lãi suất theo kỳ hạn**.
+> **Bài học v2→v3:** v2.0 đập vụn bộ não thành A1/A2/A3, cho Strategy ngủ, bó hẹp sứ mệnh vào
+> swap-rates, thêm giàn giáo → chất lượng tụt. v3.0 quay về **sự đơn giản của v1** (1 bộ não Opus
+> dệt chuyện + Strategy thức) **+ giữ luật chất lượng #8–#14 và template vàng**.
+
+> **Khi nào dùng MODE swap:** Swap USD/VND = view lên **chênh lệch lãi suất VND–USD** + hình dạng
+> **swap curve theo tenor** (spot risk triệt tiêu). Biến lớn nhất: **thanh khoản VND + động thái SBV**.
+> Giá = **swap points = Forward − Spot ≈ chênh lãi theo kỳ hạn**. → chạy PB-SWAP.
 
 ---
 
@@ -16,113 +20,107 @@ tenor → dự báo curve. Chưa auto-trade, chưa risk/compliance.
 
 1. **Đọc `memory.md` ở root trước** — bài học tích lũy toàn hệ thống
 2. **Đọc `agents/<role>/memory.md`** của agent liên quan trước khi kích hoạt
-3. **Đọc `system/` khi cần** — schema bàn giao, playbooks, watchlist, calendar
+3. **Đọc `system/` khi cần** — schema, playbooks, watchlist, calendar, sources, report-template
 4. **Sau mỗi turn, cập nhật memory** — không để bài học bị mất
 5. **Tách FACT vs OPINION** — Research chỉ nêu fact + nguồn; suy diễn để Analysis lo
 6. **Không bao giờ bỏ qua REVIEWER** — mọi insight/dự báo phải qua phản biện
 7. **Dự báo phải falsifiable** — luôn kèm *con số + mốc thời gian + điều kiện*
 
-### LUẬT CHẤT LƯỢNG (thêm sau vụ 06-24 — đọc kỹ)
+### LUẬT CHẤT LƯỢNG (cốt lõi — đây là con hào, không phải gợi ý)
 
 8. **GROUNDING GATE — không data, không kết luận.** Mỗi nhận định neo ≥1 FACT có nguồn + timestamp.
-   Research đi tra nguồn THẬT (web/đại lý) TRƯỚC khi Analysis chạy. Thiếu data → **KHÔNG độn `[ƯỚC
+   Research tra nguồn THẬT (web/đại lý) TRƯỚC khi Analysis chạy. Thiếu data → **KHÔNG độn `[ƯỚC
    LƯỢNG]` rồi kết luận như thật**; hạ độ tin + liệt kê đúng số cần lấy. (06-24 sai vì bỏ bước này.)
 9. **ĐỊNH NGHĨA INPUT TRƯỚC KHI TÍNH.** Ghi rõ con số input *là gì*: đơn vị + convention
-   (i_VND tuyệt đối? chênh lãi i_VND−i_USD? swap points ra đồng?). Sai bước này = sai toàn bộ.
+   (i_VND tuyệt đối? chênh lãi i_VND−i_USD? swap points ra đồng? tỷ giá?). Sai bước này = sai toàn bộ.
 10. **SANITY-CHECK ĐỘ LỚN.** Mọi số tính ra phải đối chiếu mốc thực tế trước khi tin
     (vd: swap points 1Y USD/VND ~3–4% spot ≈ 800–1.100đ). Số "lệch tầm" = cờ đỏ → dừng, soi lại.
-11. **CHỐNG NGHI-THỨC.** KHÔNG spawn cả roster cho "dày". Spawn CHỈ để fan-out research thật
-    (R1–R6 mỗi con một nguồn). **Một cái đầu CÓ data > năm cái đầu KHÔNG data.**
+11. **CHỐNG NGHI-THỨC.** KHÔNG spawn cả roster cho "dày". **Một bộ não CÓ data > năm cái đầu KHÔNG
+    data.** Mặc định chạy gọn (xem roster); chỉ fan-out research khi cần nhiều nguồn THẬT song song.
 12. **NGẮN & RA QUYẾT ĐỊNH.** Mỗi mục phải đổi một quyết định, không thì cắt. Bỏ bảng macro độn.
-13. **ĐÓNG VÒNG DỰ BÁO.** Đầu mỗi phiên, Journalist **chấm các dự báo tới hạn TRƯỚC** rồi mới
-    phân tích mới. Xác suất phải dẫn **base-rate lịch sử đã chấm** (hoặc ghi rõ "prior, chưa chấm").
-    Dự báo dùng **trigger 1 con số** (vd "ON > 5% giữ > 5 phiên"), tránh range không-thể-sai.
-14. **CHUẨN BÁO CÁO = bản 19/06 (gold standard).** Theo `system/report-template.md` +
-    `benchmarks/2026-06-19-USDVND-gold-standard.pdf`: (a) **thesis-first** (Bias/Confidence/Horizon/
-    Target + 1 dòng); (b) **xương sống tự sự đáng nhớ**; (c) **đào tín hiệu ẩn** (cơ chế ít người thấy),
-    không mô tả bề mặt; (d) ma trận kịch bản + EV; (e) dashboard watch-level + trigger + điều kiện
-    vô hiệu hóa; (f) Reviewer nêu N lỗ hổng có mức độ + kịch bản đảo chiều nguy hiểm nhất; (g) phân
-    khúc hành động theo đối tượng. **Hay = tự sự + tín hiệu ẩn neo trên data thật, KHÔNG phải dài.**
+13. **ĐÓNG VÒNG DỰ BÁO.** Đầu mỗi phiên, Journalist **chấm dự báo tới hạn TRƯỚC** rồi mới phân tích
+    mới. Xác suất phải dẫn **base-rate lịch sử đã chấm** (hoặc ghi "prior, chưa chấm"). Dự báo dùng
+    **trigger 1 con số** (vd "ON > 5% giữ > 5 phiên"), tránh range không-thể-sai.
+14. **CHUẨN BÁO CÁO = bản 19/06.** Theo `system/report-template.md` + `benchmarks/`: (a) **thesis-first**
+    (Bias/Confidence/Horizon/Target + 1 dòng); (b) **xương sống tự sự đáng nhớ**; (c) **đào tín hiệu
+    ẩn**, không mô tả bề mặt; (d) ma trận kịch bản + EV; (e) dashboard watch-level + trigger + điều
+    kiện vô hiệu hóa; (f) Reviewer N lỗ hổng có mức độ + kịch bản đảo chiều nguy hiểm nhất; (g) phân
+    khúc hành động theo đối tượng. **Hay = tự sự + tín hiệu ẩn neo data thật, KHÔNG phải dài.**
+
+15. **KHÔNG TÁI LẬP TEAM.** Mỗi reorg thêm hỗn loạn (đã chứng minh v2). Khóa cấu trúc đơn giản này;
+    tiến hóa qua **memory + luật**, không qua tái cơ cấu.
 
 ---
 
-## CẤU TRÚC HỆ THỐNG
+## ROSTER (v3 — gọn như v1, giữ tài sản tốt của v2)
 
 ```
 CLAUDE.md              ← luật hệ thống (file này)
 memory.md              ← bộ nhớ tổng + watchlist + sổ lỗi
 system/
-├── schema.md          ← hợp đồng bàn giao giữa agent (format cứng)
-├── playbooks.md       ← đường ray theo loại câu hỏi
+├── schema.md          ← hợp đồng bàn giao (gọn)
+├── playbooks.md       ← đường ray theo loại câu hỏi (PB-SWAP = mode swap)
 ├── watchlist.md       ← ngưỡng cảnh báo (spike/drop nóng)
-├── calendar.md        ← lịch sự kiện chủ động (R4 giữ)
+├── calendar.md        ← lịch sự kiện chủ động
 ├── sources.md         ← data manifest: số THẬT cần kéo mỗi phiên (luật #8)
 └── report-template.md ← chuẩn báo cáo gold-standard (luật #14)
-benchmarks/            ← báo cáo mẫu để noi theo
-└── 2026-06-19-USDVND-gold-standard.pdf
-reports/               ← báo cáo tự động 5h sáng đổ vào đây
+benchmarks/            ← báo cáo mẫu để noi theo (2026-06-19 gold standard)
+reports/               ← báo cáo lưu/tự động
 agents/
-├── orchestrator/      ← điều phối, tổng hợp            [Sonnet]
-├── research/          ← Research Lead (chuẩn hóa data)  [Sonnet]
-│   ├── r1-rates-liquidity/  ← LNH, OMO, tín phiếu, CITAD [Haiku]
-│   ├── r2-macro-vn/         ← CPI, GDP, BoP, FDI, XNK    [Haiku]
-│   ├── r3-macro-global/     ← Fed/SOFR, UST, DXY, CNY    [Haiku]
-│   ├── r4-policy-sbv/       ← tỷ giá TT, can thiệp, văn bản [Sonnet]
-│   ├── r5-flow-seasonality/ ← BCTC cuối quý, Tết, thuế   [Sonnet]
-│   └── r6-others/           ← tin bất thường, NDF, địa CT  [Haiku]
-├── analysis/
-│   ├── a1-curve/      ← mổ curve: slope, kink, fair value [Opus]
-│   ├── a2-insight/    ← giải thích lý do từng tenor        [Opus]
-│   └── a3-forecast/   ← kịch bản & dự báo (có mốc)         [Sonnet]
-├── reviewer/          ← phản biện / red-team               [Opus]
-├── journalist/        ← ghi chép, scoreboard, sổ lỗi       [Haiku]
-└── strategy/          ← NGỦ (bật sau giai đoạn học)        [—]
+├── orchestrator/   ← điều phối, chọn playbook, tổng hợp        [Sonnet]
+├── research/       ← Research Lead: tra nguồn THẬT theo sources.md, chuẩn hóa  [Sonnet]
+├── analysis/       ← ⭐ BỘ NÃO TỔNG (1 mạch): macro+kỹ thuật+curve+insight+forecast+tín hiệu ẩn  [Opus]
+├── strategy/       ← ⚡ THỨC: setup (entry/SL/TP), proxy, phân khúc đối tượng   [Opus/Sonnet]
+├── reviewer/       ← red-team: tái tính số + sanity-check + lỗ hổng có mức độ   [Opus]
+└── journalist/     ← chấm scoreboard, sổ lỗi, cập nhật memory                   [Haiku]
 ```
+
+> **Sub-lens tùy chọn (KHÔNG spawn mặc định):** `research/r1..r6` và `analysis/a1..a3` là **checklist/
+> lăng kính nội bộ** cho Research Lead và Bộ não dùng khi cần đào sâu một mảng — KHÔNG phải 9 báo cáo
+> rời chạy song song. Memory của chúng vẫn giữ. Chỉ tách ra thành subagent thật khi có nhiều nguồn
+> data cần kéo song song (luật #11).
 
 ---
 
-## PHÂN BỔ MODEL (tiết kiệm token)
+## PHÂN BỔ MODEL
 
-> **Haiku gom/ghi · Sonnet điều phối + phân tích vừa · Opus chỉ cho nút não.**
-> Khi spawn subagent qua Agent tool, set `model` đúng theo nhãn ở đầu mỗi `prompt.md`.
+| Vai | Model | Vì sao |
+|-----|-------|--------|
+| **Analysis (bộ não)** | **Opus** | Dệt cả câu chuyện — KHÔNG chia nhỏ rồi hạ cấp (lỗi v2) |
+| **Reviewer** | **Opus** | Red-team + tái tính số |
+| Strategy | Opus (kèo lớn) / Sonnet | Setup cần lý luận chắc |
+| Research Lead, Orchestrator | Sonnet | Điều phối, chuẩn hóa data |
+| Sub-lens gom data thô (khi fan-out) | Haiku | Chỉ gom số + trích nguồn |
+| Journalist | Haiku | Ghi chép, scoreboard |
 
-| Tầng | Agent | Model |
-|------|-------|-------|
-| Điều phối | Orchestrator, Research Lead | Sonnet |
-| Gom data | R1, R2, R3, R6 | Haiku |
-| Diễn giải data | R4, R5 | Sonnet |
-| Nút não | A1 Curve, A2 Insight, Reviewer | **Opus** |
-| Dự báo | A3 Forecast | Sonnet (→ Opus khi tín hiệu mâu thuẫn) |
-| Ghi chép | Journalist | Haiku |
-
-Tổng: **3 Opus / 4 Sonnet / 5 Haiku**. Đặt trần **≤ 3 lần gọi Opus / turn**.
-
-> ⚠️ **Model tier KHÔNG phải đòn bẩy chất lượng.** Đòn bẩy là **DATA được neo + 1 lượt phân tích
-> sắc**. Lên Opus hết / spawn nhiều wave mà không có số thật = nói trơn tru chuyện sai (vụ 06-24).
-> Chỉ spawn khi có **research thật để chạy song song**, không phải để chế thêm mục cho báo cáo dày.
+> ⚠️ **Model tier KHÔNG phải đòn bẩy chất lượng** — DATA neo + 1 lượt phân tích sắc mới là. Bộ não
+> để NGUYÊN một mạch trên Opus; đừng đập vụn hay hạ cấp nó.
 
 ---
 
-## LUỒNG XỬ LÝ CHUẨN
+## LUỒNG XỬ LÝ CHUẨN (đơn giản như v1 + grounding)
 
 ```
-Bạn đưa input (curve / câu hỏi / data)
+Bạn đưa input (câu hỏi / curve / data)
         ↓
-[ORCHESTRATOR] đọc memory → chọn PLAYBOOK → chỉ gọi researcher liên quan
+[ORCHESTRATOR] đọc memory → Journalist chấm dự báo tới hạn → chọn PLAYBOOK
         ↓
-[RESEARCH SQUAD] R1…R6 chạy SONG SONG → [Research Lead] gạn lọc theo schema
+[RESEARCH] tra nguồn THẬT theo sources.md → FACT + nguồn + as-of (luật #8,#9)
         ↓
-[ANALYSIS] A1 mổ curve · A2 bóc insight/tenor · A3 dự báo (song song)
+[ANALYSIS — BỘ NÃO] 1 mạch: macro 2 phía → trái tim (gap/curve) → tín hiệu ẩn →
+        bull/bear → forecast falsifiable. Sanity-check số (luật #10).
         ↓
-[REVIEWER] red-team — 1 vòng: PASS / cần sửa gì
+[STRATEGY] setup (entry/SL/TP/RR), proxy, phân khúc đối tượng — nếu nhận định đủ rõ
         ↓
-[ORCHESTRATOR] tổng hợp → BÁO CÁO cho bạn
+[REVIEWER] red-team 1 vòng: convention + tái tính số + lỗ hổng có mức độ → PASS / SỬA / BẤT ĐỒNG
         ↓
-[JOURNALIST] ghi input + insight + dự báo (có mốc) → cập nhật memory
+[ORCHESTRATOR] tổng hợp theo report-template → BÁO CÁO
+        ↓
+[JOURNALIST] ghi dự báo (có mốc) + bài học → cập nhật memory
 ```
 
-Quy tắc bất đồng: A2 ↔ Reviewer mâu thuẫn không giải quyết được → **báo cáo nêu
-cả 2 phía + mức tin**, KHÔNG ép ra 1 đáp án giả.
+Quy tắc bất đồng: Analysis ↔ Reviewer mâu thuẫn không giải được → **báo cáo nêu cả 2 phía + mức tin**,
+KHÔNG ép 1 đáp án giả.
 
 ---
 
@@ -130,9 +128,9 @@ cả 2 phía + mức tin**, KHÔNG ép ra 1 đáp án giả.
 
 | Cơ chế | File | Khi nào |
 |--------|------|---------|
-| **Báo cáo 5h sáng** | `.github/workflows/daily-report.yml` | 22:00 UTC = 05:00 ICT mỗi ngày → đổ vào `reports/` |
-| **Lịch sự kiện** | `system/calendar.md` | R4 giữ; trước sự kiện 1–2 ngày team tự nhắc + dựng kịch bản |
-| **Watchlist cảnh báo** | `system/watchlist.md` | Chạm ngưỡng (tăng/giảm nóng) → bóc nguyên do + tìm tiền lệ quá khứ |
+| **Báo cáo 5h sáng** | `.github/workflows/daily-report.yml` | 22:00 UTC = 05:00 ICT → `reports/` |
+| **Lịch sự kiện** | `system/calendar.md` | trước sự kiện 1–2 ngày: tự nhắc + dựng kịch bản |
+| **Watchlist cảnh báo** | `system/watchlist.md` | chạm ngưỡng → bóc nguyên do + tìm tiền lệ |
 
 ---
 
@@ -141,42 +139,40 @@ cả 2 phía + mức tin**, KHÔNG ép ra 1 đáp án giả.
 | Câu hỏi | Ghi vào |
 |---------|---------|
 | Team học được gì mới? | `memory.md` (root) |
-| Pattern thị trường mới? | `memory.md` (mục Pattern) |
+| Pattern thị trường mới? | `memory.md` (Pattern) |
 | Nhận định sai? | `memory.md` (Sổ lỗi, gắn tag) |
-| Mảng research nào thiếu nguồn? | `agents/research/r#/memory.md` |
-| Insight/curve có pattern mới? | `agents/analysis/a#/memory.md` |
+| Research thiếu nguồn ở mảng nào? | `agents/research/(r#/)memory.md` |
+| Insight/curve có pattern mới? | `agents/analysis/(a#/)memory.md` |
 | Reviewer phát hiện blind spot? | `agents/reviewer/memory.md` |
 | Dự báo đúng/sai ra sao? | `agents/journalist/memory.md` (scoreboard) |
 
 ---
 
 ## PHONG CÁCH LÀM VIỆC
-
 - User: Minhminhert1 · Email: minhnh.fblc@gmail.com
-- Ngôn ngữ: Tiếng Việt · Phong cách: ngắn gọn, thực tế, không dài dòng
-- Kỳ vọng: Claude tự làm, không hỏi thừa
-- Domain: **FX Swap USD/VND Research** (rates & liquidity là trung tâm)
+- Tiếng Việt · ngắn gọn, thực tế · Claude tự làm, không hỏi thừa
+- Domain: **FX USD/VND** (directional + vĩ mô là chính; rates/swap là mode chuyên sâu)
 
 ---
 
 ## CHECKLIST CUỐI MỖI TURN
-
-- [ ] Đọc memory.md + memory agent liên quan trước khi làm
-- [ ] **Chấm dự báo tới hạn TRƯỚC (luật #13)**, rồi mới phân tích mới
-- [ ] **Định nghĩa input đúng convention (luật #9)** trước khi tính phép nào
-- [ ] Chọn đúng playbook, chỉ gọi researcher cần thiết — **không spawn cho dày (luật #11)**
-- [ ] Research tra **nguồn THẬT** theo `sources.md`, tách fact/opinion, gắn nguồn + timestamp + độ tin
-- [ ] **Sanity-check độ lớn mọi số tính ra (luật #10)**
-- [ ] Analysis đa giả thuyết; A3 dự báo có **trigger 1 con số + mốc**
-- [ ] Không bỏ qua REVIEWER (gồm tái tính số + check convention)
-- [ ] Journalist cập nhật scoreboard + sổ lỗi
-- [ ] Báo cáo **ngắn, ra quyết định (luật #12)**; cập nhật memory; commit rõ ràng
+- [ ] Đọc memory + chấm dự báo tới hạn TRƯỚC (luật #13)
+- [ ] Định nghĩa input đúng convention (luật #9) trước khi tính
+- [ ] Research tra **nguồn THẬT** theo `sources.md`; tách fact/opinion + nguồn + as-of + độ tin
+- [ ] Chạy gọn — KHÔNG spawn cho dày (luật #11)
+- [ ] Bộ não dệt 1 mạch: macro + trái tim + **tín hiệu ẩn** + bull/bear + forecast có trigger
+- [ ] Sanity-check độ lớn mọi số (luật #10)
+- [ ] Strategy ra setup nếu nhận định đủ rõ
+- [ ] Reviewer: convention + tái tính số + lỗ hổng có mức độ
+- [ ] Báo cáo theo **report-template** (thesis-first, tự sự, ngắn-ra-quyết-định)
+- [ ] Journalist cập nhật scoreboard + sổ lỗi; commit rõ ràng
 
 ---
 
 ## LỊCH SỬ
-
 | Ngày | Version | Thay đổi |
 |------|---------|---------|
-| 2026-06-19 | v1.0 | Khởi tạo FX multi-agent system (6 agent generic) |
-| 2026-06-23 | v2.0 | Chuyển trọng tâm sang **Swap USD/VND**: research squad R1–R6, analysis A1–A3, model allocation, schema bàn giao, playbooks, watchlist, calendar, báo cáo 5h sáng |
+| 2026-06-19 | v1.0 | Khởi tạo FX multi-agent (6 agent generic). **Đẻ ra báo cáo chuẩn vàng 19/06.** |
+| 2026-06-23 | v2.0 | Chuyển sang Swap USD/VND: R1–R6, A1–A3, model allocation, schema, playbooks, watchlist, calendar. *(Sau đó phát hiện làm loãng chất lượng.)* |
+| 2026-06-24 | v2.1 | Thêm luật chất lượng #8–#14 + `sources.md` + `report-template.md` + benchmark 19/06 |
+| 2026-06-24 | v3.0 | **Quay về đơn giản của v1**: gộp lại 1 bộ não Opus (macro+curve+insight+forecast), **đánh thức Strategy**, hạ swap-curve xuống 1 playbook (PB-SWAP), sub-agent R/A thành lăng kính tùy chọn. Giữ toàn bộ luật chất lượng + tài sản system/ của v2. Thêm luật #15 (không tái lập team). |
