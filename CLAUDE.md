@@ -37,6 +37,12 @@ tenor → dự báo curve. Chưa auto-trade, chưa risk/compliance.
 13. **ĐÓNG VÒNG DỰ BÁO.** Đầu mỗi phiên, Journalist **chấm các dự báo tới hạn TRƯỚC** rồi mới
     phân tích mới. Xác suất phải dẫn **base-rate lịch sử đã chấm** (hoặc ghi rõ "prior, chưa chấm").
     Dự báo dùng **trigger 1 con số** (vd "ON > 5% giữ > 5 phiên"), tránh range không-thể-sai.
+14. **CHUẨN BÁO CÁO = bản 19/06 (gold standard).** Theo `system/report-template.md` +
+    `benchmarks/2026-06-19-USDVND-gold-standard.pdf`: (a) **thesis-first** (Bias/Confidence/Horizon/
+    Target + 1 dòng); (b) **xương sống tự sự đáng nhớ**; (c) **đào tín hiệu ẩn** (cơ chế ít người thấy),
+    không mô tả bề mặt; (d) ma trận kịch bản + EV; (e) dashboard watch-level + trigger + điều kiện
+    vô hiệu hóa; (f) Reviewer nêu N lỗ hổng có mức độ + kịch bản đảo chiều nguy hiểm nhất; (g) phân
+    khúc hành động theo đối tượng. **Hay = tự sự + tín hiệu ẩn neo trên data thật, KHÔNG phải dài.**
 
 ---
 
@@ -50,7 +56,10 @@ system/
 ├── playbooks.md       ← đường ray theo loại câu hỏi
 ├── watchlist.md       ← ngưỡng cảnh báo (spike/drop nóng)
 ├── calendar.md        ← lịch sự kiện chủ động (R4 giữ)
-└── sources.md         ← data manifest: số THẬT cần kéo mỗi phiên (luật #8)
+├── sources.md         ← data manifest: số THẬT cần kéo mỗi phiên (luật #8)
+└── report-template.md ← chuẩn báo cáo gold-standard (luật #14)
+benchmarks/            ← báo cáo mẫu để noi theo
+└── 2026-06-19-USDVND-gold-standard.pdf
 reports/               ← báo cáo tự động 5h sáng đổ vào đây
 agents/
 ├── orchestrator/      ← điều phối, tổng hợp            [Sonnet]

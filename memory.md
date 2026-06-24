@@ -15,6 +15,13 @@
   → Đòn bẩy chất lượng = **DATA neo + 1 lượt phân tích sắc**, KHÔNG phải model tier hay số agent.
   Đã ban luật #8–#13 + `system/sources.md` + checklist Reviewer tái-tính-số. **Đây là luật, không phải gợi ý.**
 
+- **[2026-06-24] CHUẨN VÀNG = báo cáo USDVND 19/06** (`benchmarks/2026-06-19-USDVND-gold-standard.pdf`).
+  DNA làm nó hay: (1) thesis-first box; (2) **xương sống tự sự đáng nhớ** ("3 làn sóng", "đường biên
+  26.550"); (3) **đào tín hiệu ẩn** (forward hủy ngang = trần ngầm câu giờ); (4) mọi số neo nguồn+ngày;
+  (5) một "trái tim" (gap lãi suất thực); (6) ma trận kịch bản+EV; (7) Reviewer N lỗ hổng có mức độ +
+  kịch bản đảo chiều; (8) dashboard trigger; (9) phân khúc hành động. → Đã codify vào
+  `system/report-template.md` + luật #14. **Hay = tự sự + insight ẩn neo trên data, KHÔNG phải dài.**
+
 - **[2026-06-24]** ON sụp 0.55% nhưng **1W vọt 3.70%** (>2W–3M) → KHÔNG phải "front flush".
   Overnight thật (đáo trước 30/06) dư; còn **funding bắc qua chốt quý căng ~3.7%**, dồn vào 1W.
   Bài học: đọc seasonality cuối quý ở **tenor bắc qua turn (1W/2W)**, đừng nhìn ON. ON thấp +
