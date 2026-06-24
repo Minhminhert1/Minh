@@ -84,6 +84,14 @@
   - Up-risk ~25%: spot ép trần → SBV hút tín phiếu → đẩy cả ON + term lên đồng loạt (>4%).
   - Down ~20%: turn qua êm, 1W xẹp nhanh về ~3.3% ngay sau 30/06 (phí turn biến mất). Chấm sau 03/07.
 
+- **[2026-06-24] (report đầy đủ, đã red-team) — sổ chấm:**
+  - DB-1: ON đêm 30/06 bắn 2 chữ số rồi về <3% ≤02/07 (60%). Huỷ nếu ON đêm <8% hoặc >5% sau 02/07.
+  - DB-2: 1W xẹp về 2.8–3.4 trong 02–04/07 (60%). Huỷ nếu 1W >3.5% ngày 04/07.
+  - DB-5: spot dán trần, KHÔNG đóng dưới (trần−0.3%) quá 3 phiên liên tiếp trước 31/07 (60%).
+  - DB-6: SBV nới tâm trong 3 tháng ~25% (cao hơn nếu CNH>7.30/DXY>103).
+  - **Điểm phân định A vs B: lãi 1W ngày 03/07.** Cờ đỏ ngoại: DXY>103, USD/CNH>7.30.
+  - File: reports/2026-06-24-USDVND-full-report.md
+
 ---
 
 ## Sổ lỗi (gắn tag để vá đúng chỗ)
