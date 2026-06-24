@@ -15,8 +15,10 @@
 - **ON dip + spike 1W (2026-06-24):** ON sụp 0.55 (same-day flush), **1W vọt 3.70 > 2W(3.30)–3M(3.35)**
   → bướu cô lập tại 1W, belly phẳng 2W–3M (~3.3–3.5), đuôi dốc nhẹ lên 1Y (3.80). Spike 1W =
   **turn premium dồn vào tenor ngắn nhất bắc qua chốt quý 30/06**. Đo phí turn = đỉnh spike.
-- i_VND < i_USD nhưng KHÔNG đều: âm sâu nhất ON (~−307bps), **gần zero ở 1W (spike turn)**,
-  âm nhẹ belly→1Y (~−10/−60bps). ⇒ swap points có "vết lõm về 0" đúng tại 1W.
+- ⚠️ **ĐÍNH CHÍNH bản chất:** bảng niêm yết CHÍNH LÀ chênh lãi (i_VND−i_USD), KHÔNG trừ i_USD nữa.
+  Tất cả DƯƠNG → swap points DƯƠNG (USD forward premium): ON +0.4đ, 1W +19đ, 1M +74đ, 3M +221đ,
+  6M +482đ, 1Y +1.004đ. 1W là ĐỈNH chênh lãi short-end (turn), KHÔNG phải "lõm về 0".
+  (Lỗi trước: coi bảng là i_VND tuyệt đối rồi trừ i_USD lần nữa → sai dấu.)
 
 ## Bài học mổ curve
 - **CẢNH BÁO neo nhầm tenor (2026-06-24):** thoạt đầu đọc 1W=1.15 → kết luận "front flush"; thực

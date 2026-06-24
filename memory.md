@@ -30,9 +30,10 @@
 ---
 
 ## Bias hiện tại
-- Chênh lệch lãi suất VND–USD: ON âm sâu (0.55−3.62 ≈ −307bps) → **1W bật gần phẳng** (3.70 vs
-  USD 1W ~3.6 ≈ ~0) → belly/đuôi âm nhẹ (3.3–3.8 vs USD 3.6–4.2). ⇒ swap points âm sâu nhất ON,
-  **gần zero ở 1W (do spike turn)**, âm nhẹ phần còn lại. *(USD term là ước lượng — FRESHNESS FLAG)*
+- **Chênh lệch lãi suất VND–USD = CHÍNH bảng niêm yết** (đường cong đã LÀ i_VND−i_USD, KHÔNG trừ
+  thêm i_USD). Tất cả DƯƠNG: ON +0.55% → 1W +3.70% (đỉnh turn) → belly +3.3–3.5% → 1Y +3.80%.
+  ⇒ swap points DƯƠNG toàn dải (USD forward premium): ON +0.4đ, 1W +19đ, 1M +74đ, 3M +221đ,
+  6M +482đ, 1Y **+1.004đ**. KHÔNG phải forward discount. (Forward 1Y ≈ 27.434.)
 - Thanh khoản VND hệ thống: **overnight dư** (ON 0.55%) nhưng **funding qua chốt quý CĂNG** (1W 3.70%)
   → squeeze chốt quý CÓ thật, dồn vào tenor bắc qua 30/06; ON thấp chỉ là same-day.
 - Động thái SBV gần nhất: *(chưa có data OMO/tín phiếu hôm nay — cần R1/R4 xác nhận)* —
@@ -99,4 +100,8 @@
 
 | Ngày | Nhận định sai | Nguyên nhân | Tag |
 |------|---------------|-------------|-----|
-| *(ghi khi sai)* | | | |
+| 2026-06-24 | Tính swap points ÂM (forward discount, 1Y −79đ); coi bảng là i_VND tuyệt đối | **Trừ i_USD hai lần** — bảng niêm yết ĐÃ là chênh lãi (i_VND−i_USD). Đúng: swap points DƯƠNG, 1Y +1.004đ | `#sai-bản-chất` `#double-counting` |
+
+> **Thẻ tra cứu (đọc trước khi mổ curve):** đường cong swap niêm yết = **(i_VND − i_USD) annualized** sẵn.
+> Swap points (đồng) = `Spot × giá_trị_bảng/100 × days/360`. **KHÔNG trừ i_USD lần nữa.** Dương = USD
+> forward premium = VND mất giá kỳ hạn (bình thường vì VND lãi cao hơn USD).
