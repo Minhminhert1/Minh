@@ -53,8 +53,11 @@
 
 ### Sổ chờ chấm
 - **[2026-06-23] ON bật về ≥3.0% trong 3–7 phiên (quanh 26–30/06)** — Base ~55%. ⚠️ ĐANG TRƯỢT: 25/06 ON rớt về **0.30%** (ngược hướng). Kịch bản down (ON giữ thấp) đang thắng. Lý do sai: đọc nhầm hàm phản ứng SBV (kỳ vọng hút VND cứu FX, thực tế thả thanh khoản). Chốt chấm sau 30/06, nghiêng MISS.
-- **[2026-06-25] 1W chuẩn hóa về ≤3.6% quanh 02–04/07** (sau chốt quý) — ~70%. Pre-mortem: SBV hút VND chặn FX → term giữ cao.
-- **[2026-06-25] ON giữ ≤1.5% tới 30/06** — ~60%. Trừ khi SBV lật sang bảo vệ trần tỷ giá.
+- **[2026-06-25] 1W rớt về 2.3–2.8% quanh 02–07/07** (sau chốt quý) — Base ~45–50% (đã hạ theo Reviewer); Up ~35% nếu SBV hút (spot≥26.50 / tín phiếu ròng). Chấm 07/07.
+- **[2026-06-25] ON giữ ≤1.5% tới 30/06** — ~50–60%. Trừ khi SBV lật sang bảo vệ trần tỷ giá.
+- **[2026-06-25] Chênh lãi suất VND–USD 3M giữ âm nhẹ (−0.1…−0.2%) tới cuối 7/2026** — Base ~50%. Lật dương nếu SBV thắt sớm hoặc Fed cắt SOFR. Chấm cuối 7.
+- **[2026-06-25] Q3 (sau thuế 8/2026): chênh VND–USD 3M bò về 0…+0.4%, term VND +10–30bp** — Base ~50%. Chấm cuối Q3.
+  > Chi tiết + chiến lược: `reports/2026-06-25-forecast-strategy.md`. Reviewer: 4 CẦN SỬA + 1 BẤT ĐỒNG, không PASS thẳng. Blind spot chặn: thiếu Bid/Ask + NDF + OMO realtime.
 
 ---
 
