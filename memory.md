@@ -27,7 +27,7 @@
 
 | Pattern | Điều kiện kích hoạt | Tác động | Đúng/Sai |
 |---------|---------------------|----------|----------|
-| BCTC cuối quý | tới 25–31 cuối Q | funding VND căng, O/N tăng | (chưa có data) |
+| BCTC cuối quý | tới 25–31 cuối Q | funding VND căng — KỲ HẠN VẮT QUA chốt quý (1W/2W) bật, ON có thể RỚT (tiền không vắt qua = thừa) | ✅ ĐÚNG 2026-06-25: 1W 4.35 (+0.65), ON 0.30 |
 | *(thêm khi phát hiện)* | | | |
 
 ---
@@ -37,9 +37,9 @@
 
 | Chỉ số | Giá trị gần nhất | as-of |
 |--------|------------------|-------|
-| LNH O/N | 1.65% (−125bps/phiên) 🔴 | 2026-06-23 |
-| LNH 1W / 2W | 1.80% / 3.55% (−125/−135bps) 🔴 | 2026-06-23 |
-| LNH 1M / 3M / 1Y | 3.55% / 3.70% / 3.80% (gần như đứng) | 2026-06-23 |
+| LNH O/N | 0.30% (rớt sâu, thừa thanh khoản) 🔴 | 2026-06-25 |
+| LNH 1W / 2W | 4.35% / 3.70% (+65/+40bps — phí chốt quý) 🟢 | 2026-06-25 |
+| LNH 1M / 3M / 6M / 1Y | 3.40% / 3.45% / 3.60% / 3.75% | 2026-06-25 |
 | Tỷ giá trung tâm | 25.183 | 2026-06-22 |
 | USD/VND spot | ~26.43 (sát trần) | 2026-06-22 |
 | SOFR (ON) | 3.62% | 2026-06-18 |
@@ -52,9 +52,9 @@
 | *(cập nhật)* | | | | |
 
 ### Sổ chờ chấm
-- **[2026-06-23] ON bật về ≥3.0% trong 3–7 phiên (quanh 26–30/06)** — Base ~55%. Chấm sau 30/06.
-  - Up-risk ~30%: nếu spot ép trần → SBV hút VND → ON 4–6%+ trong 1–2 tuần.
-  - Down ~15%: ON giữ 1.5–2.5% kéo dài qua chốt quý.
+- **[2026-06-23] ON bật về ≥3.0% trong 3–7 phiên (quanh 26–30/06)** — Base ~55%. ⚠️ ĐANG TRƯỢT: 25/06 ON rớt về **0.30%** (ngược hướng). Kịch bản down (ON giữ thấp) đang thắng. Lý do sai: đọc nhầm hàm phản ứng SBV (kỳ vọng hút VND cứu FX, thực tế thả thanh khoản). Chốt chấm sau 30/06, nghiêng MISS.
+- **[2026-06-25] 1W chuẩn hóa về ≤3.6% quanh 02–04/07** (sau chốt quý) — ~70%. Pre-mortem: SBV hút VND chặn FX → term giữ cao.
+- **[2026-06-25] ON giữ ≤1.5% tới 30/06** — ~60%. Trừ khi SBV lật sang bảo vệ trần tỷ giá.
 
 ---
 
@@ -63,4 +63,4 @@
 
 | Ngày | Nhận định sai | Nguyên nhân | Tag |
 |------|---------------|-------------|-----|
-| *(ghi khi sai)* | | | |
+| 2026-06-25 | Kỳ vọng ON bật ≥3.0% (dự báo 23/06) — thực tế rớt 0.30% | Đọc nhầm phản ứng SBV: tưởng áp lực FX (spot sát trần, nhập siêu) sẽ ép hút VND; SBV lại thả thanh khoản ưu tiên tăng trưởng | #bỏ-sót-SBV |
