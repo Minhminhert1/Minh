@@ -15,10 +15,12 @@
 
 ---
 
-## Bias hiện tại
-- Chênh lệch lãi suất VND–USD: *(cập nhật)*
-- Thanh khoản VND hệ thống: *(căng/dồi dào)*
-- Động thái SBV gần nhất: *(bơm/hút/can thiệp)*
+## Bias hiện tại (2026-06-25)
+- **Chênh lệch lãi suất VND–USD: ÂM và doãng rộng** (VND ON 0.30/term 3.4–3.75 vs SOFR 3.62). ⚠️ Thị trường định giá **Fed TĂNG** (~3.8% T9, ~4% cuối 2026) → van "Fed cắt nới chênh dương" ĐÃ ĐÓNG → áp lực mất giá VND mang tính **cấu trúc**.
+- **Thanh khoản VND: DỒI DÀO** (ON 0.30, SBV thả ưu tiên tăng trưởng).
+- **Động thái SBV: THẢ, chưa hút.** Spot 26.43 sát trần kỹ thuật ~26.44 (trung tâm 25.183 × ±5%). SBV mua thời gian bằng trườn tỷ giá trung tâm + bán USD lẻ, chưa hút VND.
+- **Trục lật toàn cục:** SBV còn thả hay xoay sang hút (tín phiếu ròng / spot phá trần) — quyết định toàn bộ curve.
+- Global: SOFR 3.62, Fed funds 3.63 (giữ 3.50–3.75 tại FOMC 17/06), DXY vững, USD/CNY ~6.78 đỉnh 2 năm.
 
 ---
 
