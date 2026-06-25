@@ -6,6 +6,7 @@
 
 ## Bài học tổng hợp
 *(cập nhật sau mỗi turn — pattern thị trường VN, cách phối hợp agent)*
+- [2026-06-25] Macro VN "nóng + đối ngoại căng": GDP Q1 +7.83%, CPI T5 +5.60% (vượt mục tiêu 4.5% theo tháng), nhập siêu T5 5.21 tỷ USD (kỷ lục từ 1990). 3 lực cùng đẩy VND yếu: nhập siêu + lạm phát cao + thuế Mỹ 20%/40% từ tháng 8. → Chi tiết: `reports/2026-06-25-macro-vn.md`.
 
 ---
 
