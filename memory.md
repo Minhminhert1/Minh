@@ -21,9 +21,9 @@
 ---
 
 ## Bias hiện tại
-- Chênh lệch lãi suất VND–USD: **ON 1.65% << SOFR 3.62% (diff −1.97%)** → carry VND xấu ở đầu cong; chân dài 3.70–3.80% ~ 3.5–3.6% (dương/ngang).
-- Thanh khoản VND hệ thống: **Cuối 23/06 dồi dào ở front-end** (ON rơi xuống 1.65%, cú bơm/easing); **28/06 dự báo sẽ căng dần** (nhu cầu BCTC, mục đích hạn).
-- Động thái SBV gần nhất: **23/06 bơm OMO, để ON xuống**; **24–28/06 dự báo quay hút** theo nhu cầu cuối quý; **Rủi ro cao:** Spot sát trần (26.433) → SBV có thể hút VND nóng → ON bật ↑↑ (up-risk scenario).
+- Chênh lệch lãi suất VND–USD: **ON 1.65% << SOFR 3.64% (diff −1.99%)** → carry VND xấu ở đầu cong; chân dài 3.70–3.80% ~ 3.5–3.6% (dương/ngang).
+- Thanh khoản VND hệ thống: **Dồi dào nhân tạo từ FX Swap SBV** (ON rơi xuống 1.65%, cú bơm OMO); **28/06 dự báo sẽ căng dần** (nhu cầu BCTC, mục đích hạn).
+- Động thái SBV gần nhất: **23/06 bơm OMO, để ON xuống**; **24–28/06 quay hút qua FX Swap** thay bán spot (bảo toàn dự trữ ngoại hối); **Rủi ro cao:** Đáo hạn FX Swap sau 01/07 → cú hút VND gây ON spike (thay vì reset êm); Spot chốt Q2 26.300 → SBV tạm lơi, nhưng có thể quay hút nếu cơ bản yếu.
 
 ---
 
@@ -36,7 +36,7 @@
 | Bươu 2W–3W trước chốt | 23–30/06 kỳ hạn bắc qua ngày chốt | Premium giữ tiền cuối quý (3W >2W >1M) | (Q2 thể hiện, hạ dần khi OMO bơm) |
 | OMO bơm → ON sụp | flush thanh khoản trước chốt quý | ON rơi nhanh (125 bps/phiên có thể) | (Q2/23/06 validate) |
 | Spot sát trần → SBV hút | USD/VND chạm trần nhiều phiên | ON bật ↑↑ (4–6%+), swap points dương hơn | (Q2 risk, chưa kích hoạt) |
-| *(thêm khi phát hiện)* | | | |
+| **SBV FX Swap bơm/hút thay bán spot** | VND áp lực tỷ giá + SBV muốn giữ dự trữ | ON biến động dữ dội, dự trữ bảo toàn, spot chốt cũng được | (Q2/28/06 validate: FX Swap 1.65% thay bán spot 26.3, OMO bơm + hút hành động rõ) |
 
 ---
 
@@ -49,8 +49,8 @@
 | LNH 1W / 2W | 1.80% / 3.55% (−125/−135bps) | 2026-06-23 | 🟡 **Dự báo tương tự** |
 | LNH 1M / 3M / 1Y | 3.55% / 3.70% / 3.80% (gần như đứng) | 2026-06-23 | 🟢 Dự báo ≈ đứng ±10bps |
 | Tỷ giá trung tâm | 25.183 | 2026-06-22 | 🟢 Ổn định |
-| USD/VND spot | ~26.43 (sát trần 26.442) | 2026-06-22 | 🔴 **ALERT risk** — sát trần → SBV hút VND → ON ↑↑ |
-| SOFR (ON) | 3.62% | 2026-06-18 | 🟢 Ổn định (Fed hold) |
+| USD/VND spot | 26.300 (chốt Q2) | 2026-06-28 | 🟡 **Dự báo:** BASE <26.44 (50%); BEAR ≥26.44 (30%). Chấm 30/06 EOD |
+| SOFR (ON) | 3.64% | 2026-06-28 | 🟢 Ổn định (Fed hold) |
 
 ---
 
@@ -63,6 +63,9 @@
 - **[2026-06-23] ON bật về ≥3.0% trong 3–7 phiên (quanh 26–30/06)** — Base ~55%. Chấm sau 30/06.
   - Up-risk ~30%: nếu spot ép trần → SBV hút VND → ON 4–6%+ trong 1–2 tuần.
   - Down ~15%: ON giữ 1.5–2.5% kéo dài qua chốt quý.
+- **[2026-06-28] O/N peak 30/06:** BASE 3.0–4.5% (50%); BEAR 5.0–7.0% (30%); BULL 2.0–2.8% (20%). Chấm 30/06 EOD.
+- **[2026-06-28] Spot chốt Q2:** BASE <26.44 (50%); BEAR ≥26.44 (30%). Chấm 30/06 EOD.
+- **[2026-06-28] O/N reset 04/07:** BASE <2.5%; BEAR >3.0%. Chấm 04/07 (sau đáo hạn FX Swap 01/07).
 
 ---
 
@@ -71,4 +74,5 @@
 
 | Ngày | Nhận định sai | Nguyên nhân | Tag |
 |------|---------------|-------------|-----|
-| *(ghi khi sai)* | | | |
+| 2026-06-28 | 1M–3M phẳng = kỳ vọng ổn định | Thị trường mỏng, volume thấp → mũi tên di chuyển khó, không phải tín hiệu fundamental | `#suy-diễn-quá` |
+| 2026-06-28 | Spot 26.43 vs 26.30 không dò cập nhật | Cần xác nhận spot anchor mỗi turn (sai 130pip = lớn) | `#data-cũ` |
