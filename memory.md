@@ -39,7 +39,8 @@
 - Chênh lệch lãi suất VND–USD: gần trung tính ở plateau (~3.3–3.9% ngụ ý 1M–1Y); ON cực thấp.
 - Thanh khoản VND hệ thống: overnight dư, **nhưng căng cục bộ ở turn chốt quý 30/06** (1W spike) → **NHNN đã can thiệp BƠM VND**.
 - Động thái SBV gần nhất: **29/06 chào hoán đổi FX 7 ngày, MUA USD giao ngay/BÁN USD kỳ hạn (= bơm VND qua turn), tối đa 1 tỷ USD, spot 23.991 / fwd 23.997 (+6đ ≈ 1,29%/năm), value T+1.** Đây là công cụ thanh khoản (USD quay vòng, trung tính FX), KHÔNG phải can thiệp mức tỷ giá.
-- ✅ **Mâu thuẫn level đã GIẢI:** spot thật ~**26.300** (sát TRẦN, VND yếu; trần ~26.442 = trung tâm 25.183 +5%). Con số 23.991 chỉ là **template lệnh swap NHNN giai đoạn cũ (~2023)**, không phải spot 2026. *(Lưu ý: "sát trần" — VND yếu — mới khớp luận điểm phòng thủ; tránh lẫn với "mép dưới biên độ".)*
+- ✅ **Mâu thuẫn level đã GIẢI (chính xác hóa 29/06):** spot thị trường **~26.1–26.46** (VCB 26.121/26.461), **sát TRẦN ~26.455** (VND yếu), trung tâm 25.201, sàn 23.935. Con số **23.991 trong lệnh swap ≠ spot hôm nay** — nó **neo vào giá sàn biên độ / giá mua tham khảo Sở GD NHNN (23.988)**, hoặc là template cũ thời spot ~24.000. Ở 23.991 thì $1 tỷ ≈ 24.000 tỷ VND (khớp con số đầu T6).
+  - **Spot trong swap chỉ quyết định "bao nhiêu VND/USD thế chấp"; CHI PHÍ THẬT = 6 điểm kỳ hạn** (≈1,29%/năm), không phải mức spot.
 
 ---
 
@@ -63,8 +64,10 @@
 | LNH O/N | 1.65% (−125bps/phiên) 🔴 | 2026-06-23 |
 | LNH 1W / 2W | 1.80% / 3.55% (−125/−135bps) 🔴 | 2026-06-23 |
 | LNH 1M / 3M / 1Y | 3.55% / 3.70% / 3.80% (gần như đứng) | 2026-06-23 |
-| Tỷ giá trung tâm | 25.183 | 2026-06-22 |
-| USD/VND spot | ~26.300 (sát TRẦN, VND yếu) | 2026-06-29 |
+| Tỷ giá trung tâm | 25.201 | 2026-06-29 |
+| USD/VND spot thị trường | VCB 26.121/26.461 (~26.1–26.46, sát TRẦN, VND yếu) | 2026-06-29 |
+| Biên độ ±5% | trần ~26.455 / sàn 23.935 | 2026-06-29 |
+| Giá mua tham khảo Sở GD NHNN | 23.988 (≈ spot 23.991 trong lệnh swap) | 2026-06-29 |
 | SOFR (ON) | 3.64% | 2026-06-29 |
 | Fed funds (Warsh chair) | ~3.6% (đã cắt) | 2026-06-29 |
 | Dự trữ ngoại hối | ~80 tỷ USD (khuyến nghị ~110 tỷ) | 2026-06 |
@@ -82,10 +85,11 @@
   - Up-risk ~30%: nếu spot ép trần → SBV hút VND → ON 4–6%+ trong 1–2 tuần.
   - Down ~15%: ON giữ 1.5–2.5% kéo dài qua chốt quý.
   - *Lưu ý 29/06:* swap ON vẫn ~0.40% mid (chưa ≥3.0%); căng đang thể hiện ở 1W thay vì ON.
-- **[2026-06-29] 1W swap tụt từ ~5.0% về plateau 3.3–3.7% trong 2–5 phiên (≈03–07/07)** — Base **~80%** (nâng từ 70% sau khi NHNN công bố bơm VND 7d đúng cửa sổ turn). Chấm sau 07/07.
-  - Up-risk ~12%: cầu VND vượt xa 1 tỷ USD (~24k tỷ) hoặc NHNN đảo sang hút → 1W giữ >4.5% qua 07/07.
-  - Theo dõi: mức ĐĂNG KÝ thực tế / 1 tỷ USD (đầy = căng thật lan rộng; nhỏ giọt = turn kỹ thuật).
-  - Pre-mortem nếu sai: căng cấu trúc sâu hơn turn (áp lực USD/tỷ giá lấn át dù NHNN bơm).
+- **[2026-06-29] 1W swap tụt về plateau — TÁCH 2 NHỊP (hook T+8):**
+  - *Nhịp 1 (trong tuần swap, ~85%):* 1W/ON hạ nhiệt về vùng ngụ ý swap (~4,9% all-in) trong 2–5 phiên.
+  - *Nhịp 2 (quanh đáo hạn ~07/07):* VND bị hút lại → hoặc NHNN **roll/lặp swap** (→ regime "ghìm đầu đường cong bằng swap quay vòng, kỳ hạn neo cao"), hoặc front-end **bật lại** nếu căng cấu trúc còn nguyên. Đây là thước đo regime.
+  - Theo dõi: mức ĐĂNG KÝ / 1 tỷ USD (sát 80% = khát VND) · NHNN ghép OMO/cầm cố? · có roll swap tại 07/07? · spot có rời trần?
+  - Up-risk thật: spot pin trần → NHNN **bán USD đứt (phòng thủ)** → hút VND → front-end bật lên.
 - **[2026-06-29] ON bật >8%/năm ≥1 phiên trong 30 ngày tới** (quanh mốc thuế/đáo hạn tín phiếu/cuối tháng) — Base ~65%. ON thấp hiện tại = trạng-thái-sau-can-thiệp, dễ giật.
 - **[2026-06-29] Belly gap 1M–3M đi ngang 3,2–3,8%, không thủng 3,0% suốt T7–T9/2026** — Base ~70% (gap cấu trúc "dính").
 - **[2026-06-29] Slope 3M→1Y giữ DƯƠNG, không đảo phẳng/âm trong 3 tháng** — Base ~75% (phần bù mất giá nới dần).
