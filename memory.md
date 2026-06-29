@@ -90,6 +90,13 @@
 - **[2026-06-29] Belly gap 1M–3M đi ngang 3,2–3,8%, không thủng 3,0% suốt T7–T9/2026** — Base ~70% (gap cấu trúc "dính").
 - **[2026-06-29] Slope 3M→1Y giữ DƯƠNG, không đảo phẳng/âm trong 3 tháng** — Base ~75% (phần bù mất giá nới dần).
 
+### Vị thế chiến lược đang theo dõi (Journalist chấm P&L)
+- **[2026-06-29] CORE: Nhận gap 6M** — mua USD spot ~26.300 / bán USD fwd 6M ~26.780, khóa +480đ (~3,65%/năm). Vào ½ ngay + ½ sau 30/06.
+  - Luận điểm: gap dương sticky (~75%) + belly dính (~70%) + tenor ngọt ma trận; né 1W.
+  - **Vô hiệu (thoát):** gap belly <3,0% (N2 nới) · Fed tăng (gap đảo âm) · spot phá trần + NHNN hút VND kéo dài.
+  - Chốt sớm nếu gap 6M nới >4,3% (F2N3).
+  - Bản chất CIP: phòng hộ kín ≈ hòa → cược "spot ổn hơn forward 26.780 + NHNN giữ gap".
+
 ---
 
 ## Sổ lỗi (gắn tag để vá đúng chỗ)
