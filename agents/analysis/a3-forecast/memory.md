@@ -17,7 +17,9 @@ Gap belly mid = r_VND − r_USD. Base: USD 3,64%, VND belly ~7,1% → gap ~3,46%
 | **N2 Nới** (VND~6,2%) | 2,56% — shift xuống/phẳng | 3,06% — triệt tiêu, trung tính |
 | **N3 Siết** (VND~7,6%) | 3,96% — front dựng đứng | 4,46% — rộng & dốc nhất |
 
-P (đã hiệu chỉnh tương quan Fed-cắt↔NHNN-nới): F1N1 ~32% (modal) · F2N1 ~16% · F1N2 ~12% · F2N2 ~12% · F1N3 ~11% · F2N3 ~7% · Fed↑ tail ~10% (gap đảo âm).
+**Trục Fed (SỬA 2026-06-29 theo bản tin):** Fed đã cắt xong ở ~3,6%, GIỮ là base. Warsh hawkish → tail là TĂNG, không phải cắt thêm. **Giữ 65% · Cắt thêm 15% · Tăng 20%.** (Bản cũ gán "cắt thêm 35%" = SAI, suy diễn ngoài dữ liệu — xem sổ lỗi root.)
+
+P (cập nhật): **Fed-Giữ×N1 ~36% (modal)** · các ô Fed-cắt (F2) gộp ~12% (không còn là động lực) · **Fed-TĂNG tail ~20% = gap thu hẹp/đảo âm = điểm vô hiệu chiến lược.** Gap nới (nếu có) đến từ NHNN siết (N3), không từ vế USD.
 
 **Tenor ăn nhất theo ô:** F1N1→1M–3M · F2N1→6M–1Y · F1N3→3M–6M (an toàn) · F2N3→3M–1Y. **Ngọt xuyên kịch bản: 3M–6M.**
 

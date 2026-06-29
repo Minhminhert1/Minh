@@ -91,11 +91,11 @@
 - **[2026-06-29] Slope 3M→1Y giữ DƯƠNG, không đảo phẳng/âm trong 3 tháng** — Base ~75% (phần bù mất giá nới dần).
 
 ### Vị thế chiến lược đang theo dõi (Journalist chấm P&L)
-- **[2026-06-29] CORE: Nhận gap 6M** — mua USD spot ~26.300 / bán USD fwd 6M ~26.780, khóa +480đ (~3,65%/năm). Vào ½ ngay + ½ sau 30/06.
-  - Luận điểm: gap dương sticky (~75%) + belly dính (~70%) + tenor ngọt ma trận; né 1W.
-  - **Vô hiệu (thoát):** gap belly <3,0% (N2 nới) · Fed tăng (gap đảo âm) · spot phá trần + NHNN hút VND kéo dài.
-  - Chốt sớm nếu gap 6M nới >4,3% (F2N3).
-  - Bản chất CIP: phòng hộ kín ≈ hòa → cược "spot ổn hơn forward 26.780 + NHNN giữ gap".
+- **[2026-06-29] CORE (đã nắn): Nhận gap 3M** — mua USD spot ~26.300 / bán USD fwd 3M ~26.533, khóa +233đ (~3,55%/năm). Vào ½ ngay + ½ sau 30/06.
+  - Luận điểm ĐÚNG: **modal = curve giữ (Fed hold + NHNN phòng thủ ~36%) → thu carry/roll ổn định**. (BỎ luận điểm cũ "ăn gap nới nhờ Fed cắt" — Fed đã cắt xong, sai.)
+  - Rút 6M→3M để giảm phơi nhiễm **tail Fed TĂNG (~20%, đèn đỏ #1)** vừa sửa lên.
+  - **Vô hiệu (thoát):** Fed tăng (gap đảo âm) · gap belly <3,0% (NHNN nới N2) · spot phá trần + NHNN hút VND kéo dài.
+  - Bản chất CIP: phòng hộ kín ≈ hòa → cược "spot ổn hơn forward + NHNN giữ gap".
 
 ---
 
@@ -105,3 +105,4 @@
 | Ngày | Nhận định sai | Nguyên nhân | Tag |
 |------|---------------|-------------|-----|
 | 2026-06-29 | GT2 đoán "spot sát trần → NHNN HÚT VND bảo vệ tỷ giá" — sai chiều. Thực tế NHNN BƠM VND (swap mua-giao-ngay/bán-kỳ-hạn). | Nhầm căng-thanh-khoản-turn thành phòng-thủ-tỷ-giá. Swap quay vòng USD nên trung tính FX. | `#bỏ-sót-SBV` `#suy-diễn-quá` |
+| 2026-06-29 | Ma trận kịch bản gán **"Fed cắt thêm 35%"** trong khi bản tin nói Fed đã cắt XONG ở 3,6% + Warsh hawkish (tail là TĂNG). | Suy diễn ngoài dữ liệu, không bám bản tin/report. Sửa: Fed Giữ 65 / Cắt 15 / Tăng 20. | `#suy-diễn-quá` `#data-cũ` |
