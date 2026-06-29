@@ -33,6 +33,14 @@
 ```
 *(R4 điền khi có ngày cụ thể; trước 1–2 ngày Orchestrator nhắc bạn.)*
 
+### Trigger nhận diện ô ma trận Fed × NHNN (xem A3 memory)
+- **FOMC / phát biểu Warsh** → xác định trục Fed (Giữ / Cắt / Tăng-tail).
+- **Phiên OMO + tín phiếu + lãi suất điều hành** → xác định trục NHNN:
+  - bơm ròng lớn + hạ lãi suất tín phiếu = **N2 (nới)**
+  - phát hành tín phiếu hút + tăng lãi suất điều hành = **N3 (siết)**
+  - chỉ swap/OMO chặn trần ON + tỷ giá TT tăng dần = **N1 (phòng thủ, base)**
+- **Cảnh báo tương quan:** Fed cắt → DXY mềm → NHNN dễ trượt N1→N2 (đừng kỳ vọng gap rộng F2N1).
+
 ---
 
 ## Quy tắc
