@@ -32,8 +32,9 @@
 
 ## Bias hiện tại
 - Chênh lệch lãi suất VND–USD: gần trung tính ở plateau (~3.3–3.9% ngụ ý 1M–1Y); ON cực thấp.
-- Thanh khoản VND hệ thống: overnight dư, **nhưng căng cục bộ ở turn chốt quý 30/06** (1W spike).
-- Động thái SBV gần nhất: *(chưa có data 29/06 — cần R1; spot ~26.43 sát trần as-of 22/06, theo dõi khả năng hút VND)*
+- Thanh khoản VND hệ thống: overnight dư, **nhưng căng cục bộ ở turn chốt quý 30/06** (1W spike) → **NHNN đã can thiệp BƠM VND**.
+- Động thái SBV gần nhất: **29/06 chào hoán đổi FX 7 ngày, MUA USD giao ngay/BÁN USD kỳ hạn (= bơm VND qua turn), tối đa 1 tỷ USD, spot 23.991 / fwd 23.997 (+6đ ≈ 1,29%/năm), value T+1.** Đây là công cụ thanh khoản (USD quay vòng, trung tính FX), KHÔNG phải can thiệp mức tỷ giá.
+- ⚠️ **Mâu thuẫn chưa giải:** spot swap NHNN 23.991 vs memory "spot ~26.43 sát trần" (as-of 22/06) lệch ~10% → khác mốc/sai. Cần R4 xác minh regime tỷ giá 29/06 trước khi dùng level.
 
 ---
 
@@ -43,7 +44,8 @@
 | Pattern | Điều kiện kích hoạt | Tác động | Đúng/Sai |
 |---------|---------------------|----------|----------|
 | BCTC cuối quý | tới 25–31 cuối Q | funding VND căng, O/N tăng | (chưa có data) |
-| **Turn-spike 1W** | tenor 1W ôm mốc chốt quý/năm | **gai annualize ở 1W (ON vẫn rẻ), pha loãng dần 1W→2W→3W** | chờ chấm (29/06) |
+| **Turn-spike 1W** | tenor 1W ôm mốc chốt quý/năm | **gai annualize ở 1W (ON vẫn rẻ), pha loãng dần 1W→2W→3W** | ✅ xác nhận 29/06 (NHNN can thiệp) |
+| **NHNN swap mua-giao-ngay/bán-kỳ-hạn** | turn căng VND, kỳ hạn 7d ôm mốc | **= BƠM VND tạm thời (OMO qua kênh FX), USD quay vòng → trung tính FX; đè phí turn ở 1W** | 29/06 (chờ chấm hiệu lực 1W) |
 | *(thêm khi phát hiện)* | | | |
 
 ---
@@ -72,9 +74,10 @@
   - Up-risk ~30%: nếu spot ép trần → SBV hút VND → ON 4–6%+ trong 1–2 tuần.
   - Down ~15%: ON giữ 1.5–2.5% kéo dài qua chốt quý.
   - *Lưu ý 29/06:* swap ON vẫn ~0.40% mid (chưa ≥3.0%); căng đang thể hiện ở 1W thay vì ON.
-- **[2026-06-29] 1W swap tụt từ ~5.0% về plateau 3.3–3.7% trong 2–5 phiên (≈03–07/07)** — Base ~70%. Chấm sau 07/07.
-  - Up-risk ~25%: SBV hút VND bảo vệ trần → 1W giữ >4.5% qua 07/07 (căng cấu trúc, không chỉ mùa vụ).
-  - Pre-mortem nếu sai: căng do can thiệp FX của SBV, không phải turn chốt quý.
+- **[2026-06-29] 1W swap tụt từ ~5.0% về plateau 3.3–3.7% trong 2–5 phiên (≈03–07/07)** — Base **~80%** (nâng từ 70% sau khi NHNN công bố bơm VND 7d đúng cửa sổ turn). Chấm sau 07/07.
+  - Up-risk ~12%: cầu VND vượt xa 1 tỷ USD (~24k tỷ) hoặc NHNN đảo sang hút → 1W giữ >4.5% qua 07/07.
+  - Theo dõi: mức ĐĂNG KÝ thực tế / 1 tỷ USD (đầy = căng thật lan rộng; nhỏ giọt = turn kỹ thuật).
+  - Pre-mortem nếu sai: căng cấu trúc sâu hơn turn (áp lực USD/tỷ giá lấn át dù NHNN bơm).
 
 ---
 
@@ -83,4 +86,4 @@
 
 | Ngày | Nhận định sai | Nguyên nhân | Tag |
 |------|---------------|-------------|-----|
-| *(ghi khi sai)* | | | |
+| 2026-06-29 | GT2 đoán "spot sát trần → NHNN HÚT VND bảo vệ tỷ giá" — sai chiều. Thực tế NHNN BƠM VND (swap mua-giao-ngay/bán-kỳ-hạn). | Nhầm căng-thanh-khoản-turn thành phòng-thủ-tỷ-giá. Swap quay vòng USD nên trung tính FX. | `#bỏ-sót-SBV` `#suy-diễn-quá` |
