@@ -236,14 +236,59 @@ Bơm OMO **kỳ hạn dài** (không phải 7N thuần) + swap FX 7d (bơm VND m
 ## 7. CHẤM DỰ BÁO CŨ (Journalist)
 
 **Dự báo 23/06:** "ON bật về ≥3,0% trong 3–7 phiên (quanh 26–30/06)" — Base 55%.
-**Thực tế:** ON 3,6% (29/06) → 13% (30/06). → **✅ ĐÚNG** (đúng hướng, đúng cửa sổ thời gian).
-**Ghi chú calibration:** biên độ dự báo quá hẹp — thực tế (13%) vượt cả kịch bản up-risk (4–6%); cơ chế cũng lệch một phần: up-risk giả định "SBV hút VND để giữ tỷ giá", thực tế ON spike do cầu chốt quý **trong khi SBV bơm kỷ lục**. Bài học: kịch bản up cần tách "lãi suất tăng do SBV siết" khỏi "lãi suất tăng do cầu mùa vụ khi SBV vẫn bơm".
-**Scoreboard: 1/1 (hit-rate 100%, n=1).**
+**Thực tế:** ON 3,6% (29/06) → 13% (30/06).
+**⚠️ CHẤM CÓ ĐIỀU KIỆN — không phải "✅ ĐÚNG" sạch:** baseline dùng để chấm (ON 1,65% ngày 23/06, do user cung cấp) **không tương thích** với data độc lập cùng kỳ (bình quân báo chí/SBV ghi ON ~6,2% ngày 22/06 — xem §2.2). Nếu baseline thực tế đã ở ~6% (cao hơn ngưỡng ≥3% ngay từ đầu), phép "đúng hướng" mất phần lớn ý nghĩa dự báo. **Không cộng vào scoreboard chính thức** cho tới khi baseline được xác nhận; ghi tạm là "hướng khớp nhưng baseline tranh cãi — treo".
+**Ghi chú calibration (vẫn giữ vì độc lập với vấn đề baseline):** biên độ dự báo quá hẹp — nếu tính từ chuỗi báo chí (3,6%→13%) thì biến động vẫn vượt xa kịch bản up-risk gốc (4–6%); cơ chế cũng lệch: up-risk giả định "SBV hút VND để giữ tỷ giá", thực tế ON spike do cầu chốt quý **trong khi SBV bơm kỷ lục** (xác nhận thêm bởi data nội bộ §8: OMO tuần đó chỉ bơm ròng nhẹ ~8k tỷ, không hề siết). Bài học: kịch bản up cần tách "lãi suất tăng do SBV siết" khỏi "lãi suất tăng do cầu mùa vụ khi SBV vẫn bơm".
+**Scoreboard: TREO (không phải 1/1) — chờ user xác nhận nguồn/metric bộ mid 23/06 trước khi chấm chính thức.**
 
 ---
 
 ## Nguồn chính
 Fed/FOMC & SEP 17/06 · BLS CPI/NFP · BEA GDP/PCE · ISM 01/07 · FRED SOFR/UST · NSO/GSO VN · S&P Global PMI VN · Hải quan/VnEconomy (nhập siêu) · Dân trí & VnExpress 01/07 (ON 13%, swap SBV) · Vietstock (OMO tuần) · TBTCVN & VTV Money (tỷ giá trung tâm) · LuatVietnam/MBS (TT25/2026) · Vietnam Briefing/Dorsey/Tax Foundation (thuế quan) · tygiausd.org/giavang.net (tự do, vàng). URL đầy đủ lưu trong log research từng agent.
+
+---
+
+## 8. CẬP NHẬT — Data nội bộ (user cung cấp, 02/07/2026, sau review)
+
+> Nguồn: bản tin treasury/dealing desk nội bộ (thuật ngữ TT1/TT2, GAP TT1, TgKB, Citad) — độ tin cao hơn press vì là số liệu ngành trực tiếp. Một số bảng/hình trong email gốc không truyền qua text — đã loại phần không đọc được. Đã kiểm tra chéo bằng tính toán độc lập.
+
+### 8.1 FACT mới — xác nhận GT2 (§3.2) bằng số cứng
+
+| Chỉ số | Giá trị | as-of | Độ tin |
+|---|---|---|---|
+| Tín dụng toàn HT | **+7,08% ytd** (giải ngân 1.318k tỷ), tổng dư nợ 19,93 triệu tỷ | 24/06 | 5 |
+| Huy động TT1 toàn HT | **+5,02% ytd** (+940k tỷ), tổng HĐV 19,66 triệu tỷ | 24/06 | 5 |
+| **GAP TT1** (HĐ ròng − CV ròng) | **−378k tỷ ytd** — tín dụng ra nhanh hơn huy động; y/y đang **mở rộng nhẹ** (+18k so tuần trước, −850k vs −832k) | 19/06 | 4 |
+| CV bằng ngoại tệ toàn HT | **+39,60% ytd** (giải ngân 10,01 tỷ USD ≈ 264k tỷ — quy đổi khớp tỷ giá ~26.400) | 12/06 | 5 |
+| HĐ bằng ngoại tệ toàn HT | +5,02% ytd (huy động 2,69 tỷ USD) | 24/06 | 5 (USD) / 2 (quy đổi VND — xem 8.3) |
+| **Gap CV ròng − HĐ ròng NGOẠI TỆ** | **−7,32 tỷ USD (~−192k tỷ VND)** — tự khớp phép trừ 10,01−2,69 | ytd đến 24/06 | 5 |
+| Số dư CV NT / HĐ NT | 932k tỷ (~35,3 tỷ USD) / 1.487k tỷ (~56,3 tỷ USD) | 24/06 | 5 |
+| TGKB tại SBV | 737k tỷ, **giảm 19k tỷ** so tuần trước → KBNN bơm ròng nhẹ ra nền KT | ~22/06 | 4 |
+| TGKB tại NHTM | 667k tỷ, giảm 12k tỷ | 22/06 | 4 |
+| OMO (19/06–24/06) | **Bơm ròng nhẹ ~8k tỷ** | 24/06 | 5 |
+| CITAD toàn hệ thống | 411k tỷ (22/06), tăng từ 389k tỷ (19/06) | 22/06 | 4 |
+| SBV FX swap 29/06 | Chào **1 tỷ USD, trúng thầu 100%**, kỳ hạn 7d, lãi suất **~5%/năm**, bơm **~24k tỷ VND** | 29/06 | 5 (KL/lãi suất) / 2 (giá spot/fw — xem 8.3) |
+
+### 8.2 Sửa lại kết luận cũ
+
+- **OMO tuần 22–26/06 — SỬA:** báo cáo gốc §1.3 trích Vietstock "bơm ròng ~3.962 tỷ" nhưng phép trừ thô (30.962 mới − 72.000 đáo hạn) ra **−41.038 tỷ**, không khớp. R1 đã tự flag nghi ngờ ~45.000 tỷ đáo hạn kênh khác. **Data nội bộ xác nhận đúng bậc độ lớn nhỏ:** OMO ròng tuần liền kề (19–24/06) chỉ **~+8k tỷ** — cùng bậc với số Vietstock gốc (3.962 tỷ), KHÔNG phải mức −41k tỷ. Kết luận: số liệu Vietstock đáng tin hơn phép trừ thô; nghi vấn "kênh đáo hạn khác" của R1 nhiều khả năng đúng.
+- **SBV swap FX 30/06 — NÂNG ĐỘ TIN:** trước "khối lượng KHÔNG công bố" → nay xác nhận **1 tỷ USD, trúng thầu 100%, lãi suất ~5%/7 ngày, bơm ~24k tỷ VND**. Khớp mốc thời gian (mở 29/06, thực hiện 30/06) đã nêu ở §1.3.
+
+### 8.3 🔴 CỜ CHẤT LƯỢNG DATA — không dùng giá spot/forward 23.991/23.999
+
+Bản tin ghi "giá spot 23.991đ, giá fw 23.999đ" cho swap 29/06 — **mâu thuẫn nội bộ ngay trong chính bản tin**:
+- 23.991 nằm sát **SÀN** biên độ (23.946), trong khi mọi nguồn độc lập khác (VCB, tự do, trung tâm) đều xác nhận spot đang **kịch TRẦN** (26.466) — chênh ~2.475đ (~9,4%), vô lý.
+- Cùng bản tin, dòng "10,01 tỷ USD ≈ 264k tỷ" ngụ ý tỷ giá quy đổi **~26.400** — khác hẳn 23.991 dùng cho dòng swap. Đã verify bằng tính toán: 10,01e9 × 26.400 = 264,26 nghìn tỷ (khớp), còn nếu quy đổi bằng 23.991 sẽ ra ~240k tỷ (không khớp số 264k tỷ nêu).
+- Khả năng cao nhất: lỗi OCR/copy-paste (email gốc có bảng/hình không truyền qua text).
+→ **Không đưa 23.991/23.999 vào bất kỳ tính CIP/swap points nào.** Giữ khối lượng (1 tỷ USD) và lãi suất (~5%/7d) vì không nhạy với sai số giá.
+- Tương tự, dòng "HĐ NT 2,69 tỷ USD ≈ 41k tỷ VND" tự mâu thuẫn: 41.000/2,69 ≈ **15.242 VND/USD** (vô lý). Số đúng nhiều khả năng gần **~71k tỷ** (2,69 × 26.400). Không ảnh hưởng kết luận chính vì gap USD (10,01−2,69=7,32 tỷ) tự khớp, độc lập với quy đổi VND.
+
+### 8.4 Tác động lên phân tích
+
+- **§3.2 (belly 8% bền — GT2 Funding gap cấu trúc):** từ "nghiêng về" → **XÁC NHẬN MẠNH bằng số cứng**. Tín dụng ra nhanh hơn huy động cả VND (7,08% vs 5,02%, gap 378k tỷ) lẫn ngoại tệ (39,6% vs 5,02%, gap 7,32 tỷ USD) — driver cấu trúc có thật, không còn là suy luận.
+- **§3.3 (nghịch lý carry dương nhưng spot kịch trần) — THÊM GT4:** hệ thống NH tự thân là bên mua ròng USD do CV ngoại tệ tăng 39,6%/năm >> HĐ NT tăng 5%/năm → cầu USD có thêm một chân **nội sinh từ NHTM** cân đối trạng thái ngoại tệ, không chỉ từ nhập khẩu/đầu tư. Driver này bị đánh giá thấp ở bản gốc.
+- **§4.3 (belly 1M–3M):** nghiêng xác suất từ "Soften 30%" sang giữ "Base 55%" mạnh hơn — funding gap xác nhận bằng số cứng khó đảo trong vài tuần.
+- **§4.1/§7 scoreboard:** OMO net figure của tuần chốt quý được xác nhận là bơm ròng NHỎ (~8k tỷ, không phải rút ròng lớn) — càng củng cố GT1 "ON 13% là kỹ thuật thuần túy" (§3.1), vì SBV rõ ràng KHÔNG siết OMO trong tuần đó.
 
 ---
 *Báo cáo theo schema bàn giao nội bộ. FACT tách khỏi SUY LUẬN; mọi dự báo có mốc + xác suất để Journalist chấm. Toàn bộ pipeline chạy model Fable 5 theo yêu cầu user.*

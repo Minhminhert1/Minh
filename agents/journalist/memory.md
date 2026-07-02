@@ -4,7 +4,7 @@
 
 | Tháng | Số dự báo chấm | Đúng | Hit-rate | Ghi chú |
 |-------|----------------|------|----------|---------|
-| 2026-06 | 1 | 1 | 100% (n=1) | "ON ≥3,0% quanh 26–30/06" — đúng hướng+cửa sổ; biên độ quá hẹp (thực tế 13% vượt cả up-risk 4–6%); cơ chế lệch (cầu chốt quý khi SBV bơm, không phải SBV hút) |
+| 2026-06 | 1 | **TREO** | — | "ON ≥3,0% quanh 26–30/06" — hướng khớp NHƯNG baseline (ON 1,65% 23/06) mâu thuẫn với data độc lập (~6,2% cùng kỳ) → **không chấm 1/1 cho tới khi xác nhận nguồn/metric bộ mid**. Xem sổ lỗi 02/07 + reports/2026-07-02-*.md §7. Cơ chế lệch: cầu chốt quý khi SBV bơm, không phải SBV hút. |
 
 ### Đang chờ chấm (đặt 02/07 — chi tiết reports/2026-07-02-*.md §4)
 - ON về 4–7% ≤ phiên 08/07 (Base 65%) → chấm 08/07

@@ -19,3 +19,8 @@
 - Hạn thuế T7: TNDN tạm nộp Q2 = 30/07; VAT tháng 6 = 20/07; VAT quý 2 = 31/07. Chưa tìm được con số quy mô hút VND — cần nguồn KBNN/tồn quỹ.
 - ⚠️ Gateway proxy chặn fetch toàn bộ domain báo VN (403 CONNECT) → chỉ dựa được WebSearch summary, không đọc được bài gốc. Độ tin data trần ở 3/5.
 - ⚠️ Mâu thuẫn data: memory root ghi O/N 1,65% ngày 23/06 nhưng nguồn tuần 22–26/6 (TBTCVN) ghi O/N 6,2% (22/6) → 3,2% (25/6). Cần R1 đối chiếu lại nguồn SBV.
+
+## Driver flow MỚI — funding gap ngoại tệ nội sinh (2026-07-02, data nội bộ độ tin 5)
+- CV bằng ngoại tệ toàn HT +39,6% ytd (đến 12/06) >> HĐ bằng ngoại tệ +5,02% ytd → NHTM tự thân là bên **mua ròng USD ~7,32 tỷ USD ytd** để cân đối trạng thái ngoại tệ.
+- Đây là driver cầu USD KHÁC với nhập siêu/khối ngoại/kiều hối đã track trước đó — nguồn "nội sinh từ hệ thống ngân hàng", không phải flow thương mại/đầu tư trực tiếp. Cần thêm vào danh sách driver cầu USD mỗi khi phân tích nghịch lý carry-vs-spot.
+- Theo dõi: nếu CV NT tiếp tục tăng nhanh hơn HĐ NT, áp lực này sẽ còn (không tự hết theo mùa vụ như BCTC/thuế).

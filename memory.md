@@ -25,6 +25,7 @@
 - Thanh khoản VND hệ thống: **căng cấu trúc** (tín dụng +18,26% YoY > huy động; OMO lưu hành ~244.000 tỷ; belly 8% cả tháng) + spike chốt quý 30/06 đã qua.
 - Động thái SBV gần nhất: bơm ròng OMO kỳ hạn dài 35–56d @4,5% (~14.600 tỷ phiên 30/06) + swap USD/VND 7d (30/06, đáo ~07/07) + trung tâm tăng chậm (25.206, tuần thứ 7) + CHƯA bán USD spot (độ tin 3).
 - FX: spot **kịch trần 26.466**; tự do premium 150–250đ; vàng SJC +14,6% — kỳ vọng phá giá + flow (nhập siêu 16,8 tỷ, ngoại rút 3 tỷ) đang thắng carry.
+- **[2026-07-02, data nội bộ độ tin 5] Funding gap CẤU TRÚC xác nhận bằng số cứng:** TD toàn HT +7,08% ytd (24/06) vs HĐV TT1 +5,02% ytd → GAP TT1 −378k tỷ ytd, đang mở rộng. CV ngoại tệ +39,6% ytd vs HĐ NT +5,02% ytd → gap CV−HĐ ngoại tệ **−7,32 tỷ USD**. Đây là driver cấu trúc chính khiến belly LNH đứng ~8% VÀ USD demand cao (thêm chân nội sinh từ NHTM tự cân đối trạng thái ngoại tệ, không chỉ từ nhập khẩu/đầu tư).
 
 ---
 
@@ -79,3 +80,5 @@
 |------|---------------|-------------|-----|
 | 2026-07-02 | Báo cáo 23/06 mô tả "front-end depressed 1,65%" như trạng thái thị trường trong khi bình quân LNH cùng ngày ~6% — có thể đã phân tích trên bộ số không đại diện | Không hỏi metric/nguồn của bộ mid user; không đối chiếu ngay với bình quân SBV/báo chí | `#data-cũ` `#thiếu-data` |
 | 2026-07-02 | Kịch bản up-risk 23/06 gộp chung "ON tăng do SBV hút" — thực tế ON tăng 13% khi SBV đang bơm kỷ lục (cầu mùa vụ) | Thiếu tách cơ chế: siết chính sách ≠ cầu mùa vụ | `#suy-diễn-quá` |
+| 2026-07-02 | Báo cáo 02/07 §7 tự chấm "✅ ĐÚNG, hit-rate 1/1" cho dự báo 23/06 dù chính báo cáo (§2.2) đã cảnh báo baseline (ON 1,65%) không tương thích data độc lập — mâu thuẫn logic, không được ép ra 1 kết luận sạch khi chưa xác nhận baseline | Không kiểm tra chéo giữa các mục trong cùng báo cáo trước khi chốt scoreboard | `#suy-diễn-quá` `#thiếu-data` |
+| 2026-07-02 | OMO tuần 22–26/06 "bơm ròng ~3.962 tỷ" trích Vietstock nhưng phép trừ thô (30.962−72.000=−41.038) không khớp, caveat này bị rơi khi tổng hợp vào báo cáo cuối (§1.3 gốc) dù R1 đã tự flag | Synthesis không carry-forward FRESHNESS FLAGS đầy đủ theo đúng schema.md | `#thiếu-data` |
