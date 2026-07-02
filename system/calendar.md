@@ -27,11 +27,18 @@
 
 ---
 
-## Sắp tới (cập nhật thủ công/định kỳ)
+## Sắp tới (R4 cập nhật 2026-07-02)
 ```
-- [YYYY-MM-DD] [sự kiện] — kỳ vọng: [...] — kịch bản tác động curve: [...]
+- [2026-07-03] NFP Mỹ T6 (consensus ~+100K) — mạnh → DXY↑, chân USD cứng; yếu (<60K) → cửa spot rời trần
+- [2026-07-03→06] GSO công bố GDP Q2 + CPI T6 + XNK 6T VN — CPI >5,5% → áp lực lãi suất danh nghĩa lên belly
+- [2026-07-06] Hạn comment Section 301 (đề xuất thuế 12,5% với VN)
+- [2026-07-07] Điều trần công khai Section 301 — headline risk tỷ giá
+- [2026-07-07] Đáo hạn swap USD/VND 7d của SBV — ROLL = còn đỡ thanh khoản; KHÔNG ROLL = hút VND, ưu tiên tỷ giá → tín hiệu sớm nhất
+- [2026-07-20] Hạn VAT T6 — hút VND vào KBNN, ON/1W dễ bật
+- [2026-07-24] (~) Section 122 10% hết hạn — quyết định thuế mới với VN; mọi tenor bắc qua ngày này mang premium
+- [2026-07-30] Hạn TNDN tạm nộp Q2 (2026 có gia hạn → lực hút nhẹ hơn pattern)
+- [2026-07-28/29] FOMC — ~70% giữ; dot plot hàm ý TĂNG trong 2026; hawkish surprise → tail scenario curve VND
 ```
-*(R4 điền khi có ngày cụ thể; trước 1–2 ngày Orchestrator nhắc bạn.)*
 
 ---
 
